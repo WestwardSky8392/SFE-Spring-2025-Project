@@ -23,7 +23,7 @@
     <property name="optional" value="true"/>
   </module>
 
-   <!-- Custom rule: Enforce maximum line length of 100 characters -->
+  
   <module name="LineLength">
     <property name="max" value="100"/>
     <message key="maxLineLen" value="Line is longer than {0} characters (found {1})."/>
