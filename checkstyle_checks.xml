@@ -32,7 +32,9 @@
       <property name="message"
                value="Consider using special escape sequence instead of octal value or Unicode escaped value."/>
     </module>
-            
+
+
+    
     <module name="AvoidEscapedUnicodeCharacters">
       <property name="allowEscapesForControlCharacters" value="true"/>
       <property name="allowByTailComment" value="true"/>
@@ -195,12 +197,6 @@
       <property name="influenceFormat" value="1"/>
     </module>
 
-
-  <!-- New rule: Restrict Line Length -->
-  <module name="LineLength">
-    <property name="max" value="100"/>
-    <property name="tabWidth" value="4"/>
-  </module>
             
   </module>
 </module>
