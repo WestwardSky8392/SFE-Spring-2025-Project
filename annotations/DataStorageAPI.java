@@ -33,14 +33,14 @@ public interface DataStorageAPI {
  */
 class DataStorageAPIPrototype implements DataStorageAPI {
 
-    @ProcessAPIPrototy
+    @ProcessAPIPrototye
     @Override
     public String readData(String source) {
         // Simulate reading data from a source
         return "Sample data from " + source;
     }
 
-    @ProcessAPIPrototy
+    @ProcessAPIPrototye
     @Override
     public boolean writeData(String destination, String data) {
         // Simulate writing data to a destination
