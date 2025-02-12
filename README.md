@@ -14,7 +14,7 @@ The compute engine will determine the **Digital Root Persistence** of a given in
 |--------|---------------------|
 | 9875   | 3                   |
 | 39     | 5                |
-| 9999   | 2                 |
+| 9999   | 7                 |
 | 123456 | 4                  |
 
 
