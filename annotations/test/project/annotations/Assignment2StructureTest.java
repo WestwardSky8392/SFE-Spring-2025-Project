@@ -30,7 +30,9 @@ import project.annotations.ProcessAPIPrototype;
  * could easily use the API to do everything they need to.
  */
 public class Assignment2StructureTest {
-	
+
+	private project.annotations.Utils Utils;
+
 	@ParameterizedTest
 	@MethodSource("providePrototypeParams")
 	public void checkPrototypesExist(Class<? extends Annotation> apiAnnotation, Class<? extends Annotation> prototypeAnnotation) throws Exception {

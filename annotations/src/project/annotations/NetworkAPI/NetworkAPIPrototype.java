@@ -9,10 +9,12 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface NetworkAPIPrototype{
 	//get user data
-	DataStorage dataStorage = null;
-	RetriveData retriveData = dataStorage.getData(new UserInput());
-	// rename these^^^^^^^^^, in correct order though!
-	//see if user data is valid by default(Integer)
-	Delimiter delimiter = new Delimiter(retriveData);
-	//if statement for delimitation? (Not allowed in a prototype interface)
+
+	AskUser askUser = new AskUser();
+	Screen screen = null;
+	Window window = screen.showWindow(askUser.getInfo());
+	//check if input is valid(if it's an integer)
+	ValidInfo validInfo = new ValidInfo(askUser);
+	//send to proccess API
+	SendInfo sendInfo = validInfo.sendToProcess();
 }

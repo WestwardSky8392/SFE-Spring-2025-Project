@@ -1,4 +1,4 @@
 package annotations.src.project.annotations.NetworkAPI;
 
-public class UserInput {
+public interface SendInfo {
 }
