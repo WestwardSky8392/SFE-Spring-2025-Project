@@ -13,9 +13,9 @@ The compute engine will determine the **Digital Root Persistence** of a given in
 | Input  | Output (Persistence) |
 |--------|---------------------|
 | 9875   | 3                   |
-| 39     | 2                   |
-| 9999   | 2                   |
-| 123456 | 2                   |
+| 39     | 2                |
+| 9999   | 2                 |
+| 123456 | 2                |
 
 
 ### **Explanation**

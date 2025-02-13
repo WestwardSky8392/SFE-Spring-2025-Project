@@ -1,6 +1,5 @@
-package project.annotations;
+package annotations.test.project.annotations;
 
-import java.io.File;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -13,11 +12,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import project.annotations.ConceptualAPI;
 import project.annotations.ConceptualAPIPrototype;
-import project.annotations.NetworkAPI;
-import project.annotations.NetworkAPIPrototype;
-import project.annotations.ProcessAPI;
 import project.annotations.ProcessAPIPrototype;
 
 /**
@@ -73,12 +68,12 @@ public class Assignment2StructureTest {
 	    return Stream.of(
 	            Arguments.of(ConceptualAPI.class, ConceptualAPIPrototype.class),
 	            Arguments.of(ProcessAPI.class, ProcessAPIPrototype.class),
-	            Arguments.of(NetworkAPI.class, NetworkAPIPrototype.class)
+	            Arguments.of(annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, NetworkAPIPrototype.class)
 	    );
 	}
 	
 	@ParameterizedTest
-	@ValueSource(classes = {NetworkAPI.class, ProcessAPI.class, ConceptualAPI.class })
+	@ValueSource(classes = {annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, ProcessAPI.class, ConceptualAPI.class })
 	public void checkAnnotationsExist(Class<? extends Annotation> apiAnnotation) throws Exception {
 		int numApisFound = 0;
 		
