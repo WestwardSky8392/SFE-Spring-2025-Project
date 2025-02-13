@@ -32,9 +32,6 @@
       <property name="message"
                value="Consider using special escape sequence instead of octal value or Unicode escaped value."/>
     </module>
-
-
-    
     <module name="AvoidEscapedUnicodeCharacters">
       <property name="allowEscapesForControlCharacters" value="true"/>
       <property name="allowByTailComment" value="true"/>
@@ -196,7 +193,5 @@
       <!-- The check is suppressed in the next line of code after the comment -->
       <property name="influenceFormat" value="1"/>
     </module>
-
-            
   </module>
 </module>
