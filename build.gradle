@@ -7,16 +7,6 @@ apply plugin: 'eclipse'
 eclipse.project.name = 'SEProjectFramework'
 
 sourceSets {
-	main {
-	  proto {
-	    srcDirs = ['protobuf']
-	  }
-	  java {
-		srcDirs = ['src',
-					'build/generated/source/proto/main/grpc',
-					'build/generated/source/proto/main/java']
-	  }
-	}
 	test {
 	  java {
 	     srcDirs = ['test']
