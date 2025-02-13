@@ -2,7 +2,6 @@ package annotations.src.project.annotations.NetworkAPI;
 
 //import jdk.internal.reflect.ClassFileAssembler;
 
-import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 @NetworkAPI
@@ -15,6 +14,7 @@ public @interface NetworkAPIPrototype{
 	Window window = screen.showWindow(askUser.getInfo());
 	//check if input is valid(if it's an integer)
 	ValidInfo validInfo = new ValidInfo(askUser);
-	//send to proccess API
+	//send to process API
 	SendInfo sendInfo = validInfo.sendToProcess();
+
 }
