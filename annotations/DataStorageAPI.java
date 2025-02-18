@@ -1,7 +1,6 @@
-package project.api;
+package annotations;
 
 import project.annotations.ProcessAPI;
-import project.annotations.ProcessAPIPrototype;
 
 /**
  * API for interaction between the data storage system and the compute engine.
@@ -33,14 +32,14 @@ public interface DataStorageAPI {
  */
 class DataStorageAPIPrototype implements DataStorageAPI {
 
-    @ProcessAPIPrototye
+
     @Override
     public String readData(String source) {
         // Simulate reading data from a source
         return "Sample data from " + source;
     }
 
-    @ProcessAPIPrototye
+
     @Override
     public boolean writeData(String destination, String data) {
         // Simulate writing data to a destination

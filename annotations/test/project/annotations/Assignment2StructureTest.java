@@ -25,9 +25,13 @@ import project.annotations.ProcessAPIPrototype;
  * could easily use the API to do everything they need to.
  */
 public class Assignment2StructureTest {
+<<<<<<< HEAD
 
 	private project.annotations.Utils Utils;
 
+=======
+
+>>>>>>> main
 	@ParameterizedTest
 	@MethodSource("providePrototypeParams")
 	public void checkPrototypesExist(Class<? extends Annotation> apiAnnotation, Class<? extends Annotation> prototypeAnnotation) throws Exception {
@@ -71,7 +75,7 @@ public class Assignment2StructureTest {
 	            Arguments.of(annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, NetworkAPIPrototype.class)
 	    );
 	}
-	
+
 	@ParameterizedTest
 	@ValueSource(classes = {annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, ProcessAPI.class, ConceptualAPI.class })
 	public void checkAnnotationsExist(Class<? extends Annotation> apiAnnotation) throws Exception {
