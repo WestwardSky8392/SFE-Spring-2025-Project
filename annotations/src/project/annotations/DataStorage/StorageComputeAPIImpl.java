@@ -1,9 +1,10 @@
-package src;
+package src; 
+
 import api.StorageComputeAPI;
 
 public class StorageComputeAPIImpl implements StorageComputeAPI {
     
-   
+    //  Variables
     private String inputSource;
     private String outputDestination;
 
