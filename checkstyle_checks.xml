@@ -67,10 +67,5 @@
                      value="Method type name ''{0}'' must match pattern ''{1}''."/>
         </module>
 
-        <!-- Remove FileName module (problematic one) -->
-        <!-- Add a check for file tabs if needed -->
-        <module name="FileTabCharacter"/>
-        
-        <!-- Other existing modules -->
     </module>
 </module>
