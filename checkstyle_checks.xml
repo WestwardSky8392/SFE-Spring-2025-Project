@@ -21,11 +21,6 @@
         <property name="optional" value="true"/>
     </module>
 
-    <!-- Move FileTabCharacter to Checker level -->
-    <module name="FileTabCharacter">
-        <property name="eachLine" value="true"/>
-    </module>
-
     <module name="TreeWalker">
         <module name="OuterTypeFilename"/>
         <module name="IllegalTokenText">
@@ -40,19 +35,11 @@
             <property name="allowByTailComment" value="true"/>
             <property name="allowNonPrintableEscapes" value="true"/>
         </module>
-        <module name="AvoidStarImport"/>
         <module name="OneTopLevelClass"/>
-        <module name="NoLineWrap">
-            <property name="tokens" value="PACKAGE_DEF, IMPORT, STATIC_IMPORT"/>
-        </module>
         <module name="EmptyBlock">
             <property name="option" value="TEXT"/>
             <property name="tokens"
                       value="LITERAL_TRY, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH"/>
-        </module>
-        <module name="NeedBraces">
-            <property name="tokens"
-                      value="LITERAL_DO, LITERAL_ELSE, LITERAL_FOR, LITERAL_IF, LITERAL_WHILE"/>
         </module>
         <module name="LeftCurly">
             <property name="tokens"
@@ -76,10 +63,8 @@
                             INSTANCE_INIT, ANNOTATION_DEF, ENUM_DEF, INTERFACE_DEF, RECORD_DEF,
                             COMPACT_CTOR_DEF, LITERAL_SWITCH"/>
         </module>
-        <module name="MissingSwitchDefault"/>
         <module name="FallThrough"/>
         <module name="UpperEll"/>
-        <module name="ModifierOrder"/>
         <module name="PackageName">
             <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
             <message key="name.invalidPattern"
@@ -115,12 +100,6 @@
             <property name="tokens"
                       value="CTOR_DEF, LITERAL_NEW, METHOD_CALL, METHOD_DEF,
                             SUPER_CTOR_CALL, ENUM_CONSTANT_DEF, RECORD_DEF"/>
-        </module>
-        <module name="AnnotationLocation">
-            <property name="id" value="AnnotationLocationMostCases"/>
-            <property name="tokens"
-                      value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, METHOD_DEF, CTOR_DEF,
-                            RECORD_DEF, COMPACT_CTOR_DEF"/>
         </module>
     </module>
 </module>
