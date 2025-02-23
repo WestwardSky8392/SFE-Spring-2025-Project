@@ -7,11 +7,16 @@ public class DataStorageAPIPrototype implements DataStorageAPI {
 
     private final StorageComputeAPI storageComputeAPI;
 
-    // Constructor to initialize the StorageComputeAPI
+     /*
+       Initialize 
+    */
     public DataStorageAPIPrototype(StorageComputeAPI storageComputeAPI) {
         this.storageComputeAPI = storageComputeAPI;
     }
 
+    /*
+      Fetches data
+    */
     @Override
     @ProcessAPIPrototype
     public String fetchData(String key) {
@@ -19,6 +24,9 @@ public class DataStorageAPIPrototype implements DataStorageAPI {
         return storageComputeAPI.readData(key);
     }
 
+     /*
+      stores data
+    */
     @Override
     @ProcessAPIPrototype
     public void storeData(String key, String value) {
