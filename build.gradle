@@ -12,9 +12,9 @@ sourceSets {
             srcDirs = [
                 'src/project/annotations',
                 'src/project/APIs',
-                'src/project/APIs/DataStorage',
-                'src/project/APIs/NetworkAPI',
-                'src/project/APIs/API-DataConnections'
+                'src/project/APIs/datastorage',
+                'src/project/APIs/networkapi',
+                'src/project/APIs/api-dataconnections'
             ]
         }
     }
