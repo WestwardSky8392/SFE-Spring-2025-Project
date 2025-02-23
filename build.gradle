@@ -9,16 +9,23 @@ eclipse.project.name = 'SEProjectFramework'
 sourceSets {
     main {
         java {
-            srcDirs = ['src/project/annotations', 'src/project/APIs']
+            srcDirs = [
+                'src/project/annotations',
+                'src/project/APIs',
+                'src/project/APIs/datastorage',
+                'src/project/APIs/networkapi',
+                'src/project/APIs/api-dataconnections'
+            ]
         }
     }
     test {
         java {
-            srcDirs = ['test/project/annotations']
+            srcDirs = [
+                'test/project/annotations'
+            ]
         }
     }
 }
-
 
 repositories {
     mavenCentral()
