@@ -1,4 +1,4 @@
-public class api implements DataStorage, RetriveData, StoreData {
+public class DataStoragePrototype implements DataStorage, RetriveData, StoreData {
     DataStorage dataStorage = null; // <--- file reading??
     RetriveData retriveData = dataStorage.getData(new UserInput());
     // rename these^^^^^^^^^, in correct order though!
