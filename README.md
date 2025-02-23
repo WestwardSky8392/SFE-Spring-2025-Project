@@ -1,4 +1,5 @@
-# SWE-Spring-2025-Project
+<img width="532" alt="RootChain_LogoProject" src="https://github.com/user-attachments/assets/a0c098dd-3473-4a37-b872-1118e8ea3f8d" />
+
 ## Project Overview
 This project is part of a semester-long assignment to build a compute engine that takes an integer as input, processes it according to a defined computation, and outputs a result. The project consists of three key APIs:
 
