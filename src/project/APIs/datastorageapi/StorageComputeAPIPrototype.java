@@ -1,4 +1,4 @@
-package api.prototype;
+package datastorageapi;
 
 import api.StorageComputeAPI;
 import annotations.ProcessAPIPrototype; 

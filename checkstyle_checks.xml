@@ -24,14 +24,14 @@
     <module name="TreeWalker">
         <module name="OuterTypeFilename"/>
         
-        <!-- Relax package name pattern to allow capital letters like 'NetworkAPI' -->
+        <!-- Relax package name pattern to allow capital letters like 'networkapi' -->
         <module name="PackageName">
             <property name="format" value="^[a-z]+(\.[a-z0-9][a-z0-9]*)*$"/>
             <message key="name.invalidPattern"
                      value="Package name ''{0}'' must match pattern ''{1}''."/>
         </module>
 
-        <!-- Relax type name pattern to allow capital letters like 'NetworkAPI' -->
+        <!-- Relax type name pattern to allow capital letters like 'networkapi' -->
         <module name="TypeName">
             <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, ANNOTATION_DEF, RECORD_DEF"/>
             <property name="format" value="^[A-Za-z][a-zA-Z0-9]*$"/>
