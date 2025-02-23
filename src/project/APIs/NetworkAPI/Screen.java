@@ -1,13 +1,12 @@
-package annotations.src.project.annotations.NetworkAPI;
+package NetworkAPI;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
-
-public interface Screen {
-    Window showWindow(AskUser askUser);
-
-    @Target(ElementType.METHOD)
-    @interface NetworkAPIPrototype {
-        // Marker annotation, should be applied to a method within a prototype class
+public class Screen implements ScreenInstructions {
+    Object window;
+    public Screen(Object window){
+        this.window = window;
+    }
+    @Override
+    public void loadScreen(){
+        //will load screen for user to enter information
     }
 }
