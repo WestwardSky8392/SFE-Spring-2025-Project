@@ -1,4 +1,4 @@
-package NetworkAPI;
+package network_api;
 
 import java.lang.annotation.Annotation;
 

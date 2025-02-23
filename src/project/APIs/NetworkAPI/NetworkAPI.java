@@ -1,4 +1,4 @@
-package NetworkAPI;
+package network_api;
 
 public interface NetworkAPI {
     void askUser();

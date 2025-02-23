@@ -1,4 +1,4 @@
-package NetworkAPI;
+package network_api;
 
 public class Screen implements ScreenInstructions {
     Object window;
