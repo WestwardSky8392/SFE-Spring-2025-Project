@@ -12,14 +12,11 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import project.annotations.ConceptualAPIPrototype;
-import project.annotations.ProcessAPIPrototype;
-
 /**
  * This test checks that all 3 APIs exist in the 'src' folder as interfaces, with the appropriate annotations, and that they all
  * have corresponding prototypes, also with the appropriate annotations.
- * 
- * Remember, it's easiest to build the prototype first, and use that to create the APIs - use Eclipse to auto-generate classes, 
+ *
+ * Remember, it's easiest to build the prototype first, and use that to create the APIs - use Eclipse to auto-generate classes,
  * interfaces, etc as you build out the prototype. This ensures that your API is written from the perspective of the client - the prototype
  * acts as a "pretend" client; while the prototype code will never actually run, it's a bare-bones check that some other fully-featured client
  * could easily use the API to do everything they need to.
@@ -54,7 +51,7 @@ public class Assignment2StructureTest {
 					}
 				}
 			}
-			
+
 		}
 		if (numPrototypesFound != 1) {
 			errors.add("No (or multiple) class method with the " + prototypeAnnotation.getSimpleName() + " annotation was found in 'src'");
@@ -66,17 +63,17 @@ public class Assignment2StructureTest {
 
 	private static Stream<Arguments> providePrototypeParams() {
 	    return Stream.of(
-	            Arguments.of(ConceptualAPI.class, ConceptualAPIPrototype.class),
-	            Arguments.of(ProcessAPI.class, ProcessAPIPrototype.class),
+	            Arguments.of(project.annotations.ConceptualAPI.class, ConceptualAPIPrototype.class),
+	            Arguments.of(project.annotations.ProcessAPI.class, ProcessAPIPrototype.class),
 	            Arguments.of(annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, NetworkAPIPrototype.class)
 	    );
 	}
-	
+
 	@ParameterizedTest
 	@ValueSource(classes = {annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, ProcessAPI.class, ConceptualAPI.class })
 	public void checkAnnotationsExist(Class<? extends Annotation> apiAnnotation) throws Exception {
 		int numApisFound = 0;
-		
+
 		for (Class<?> clazz : Utils.loadAllClasses()) {
 			if (clazz.isInterface()) {
 				if (clazz.isAnnotationPresent(apiAnnotation)) {
@@ -84,9 +81,9 @@ public class Assignment2StructureTest {
 				}
 			}
 		}
-		
+
 		List<String> errors = new ArrayList<>();
-		
+
 		if (numApisFound != 1) {
 			errors.add("No (or multiple) interface found with annotation " + apiAnnotation.getSimpleName() + " in 'src'");
 			errors.add("Keep in mind that all APIs must be interfaces (not classes), and that each API annotation"
@@ -97,5 +94,5 @@ public class Assignment2StructureTest {
 		}
 	}
 
-	
+
 }
