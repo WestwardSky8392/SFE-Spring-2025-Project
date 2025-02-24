@@ -1,4 +1,4 @@
-import annotations.ConceptualAPI;
+import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
 public interface DigitalRootPersistenceAPI {
