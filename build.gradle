@@ -10,11 +10,12 @@ sourceSets {
     main {
         java {
             srcDirs = [
-                'src/project/annotations',
-                'src/project/apis',
-                'src/project/apis/datastorage',
-                'src/project/apis/networkapi',
-                'src/project/apis/api-dataconnections'
+                'src',                             // Root source directory
+                'src/project/annotations',         // annotations package
+                'src/project/apis',                // apis package
+                'src/project/apis/datastorage',    // datastorage API
+                'src/project/apis/networkapi',     // networkapi API
+                'src/project/apis/api-dataconnections'  // api-dataconnections API
             ]
         }
     }
