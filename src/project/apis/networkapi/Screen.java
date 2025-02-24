@@ -1,4 +1,4 @@
-package annotations.src.project.annotations.NetworkAPI;
+package project.annotations.NetworkAPI;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
