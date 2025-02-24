@@ -11,10 +11,10 @@ sourceSets {
         java {
             srcDirs = [
                 'src/project/annotations',
-                'src/project/APIs',
-                'src/project/APIs/datastorage',
-                'src/project/APIs/networkapi',
-                'src/project/APIs/api-dataconnections'
+                'src/project/apis',
+                'src/project/apis/datastorage',
+                'src/project/apis/networkapi',
+                'src/project/apis/api-dataconnections'
             ]
         }
     }
