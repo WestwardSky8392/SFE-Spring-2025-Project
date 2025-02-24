@@ -1,11 +1,12 @@
 package project.apis.networkapi;
 
-import project.annotations.NetworkAPI;
-import project.apis.networkapi.Screen;
+import project.annotations.NetworkAPI.Screen;
+import project.annotations.NetworkAPI.Screen.NetworkAPIPrototype;
 import project.apis.networkapi.AskUser;
 import project.apis.networkapi.Window;
 import project.apis.networkapi.SendInfo;
 import project.apis.networkapi.ValidInfo;
+
 
 /**
  * Prototype implementation of the NetworkAPI.
