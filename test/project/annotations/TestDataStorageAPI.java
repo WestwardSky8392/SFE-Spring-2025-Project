@@ -1,4 +1,4 @@
-package project.APIs.DataStorage;
+package project.apis.DataStorage;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import project.annotations.ProcessAPI; // Ensure annotation exists and is correctly imported
 
 /**
  * Smoke test for DataStorageAPI 
@@ -58,5 +59,8 @@ class DataStorageAPITest {
 
         // Assert
         verify(dataStorageAPI, times(1)).storeData(key, value);
+
+        // Confirm no unexpected interactions
+        verifyNoMoreInteractions(dataStorageAPI);
     }
 }
