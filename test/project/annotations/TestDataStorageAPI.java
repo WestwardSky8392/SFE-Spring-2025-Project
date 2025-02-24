@@ -12,7 +12,7 @@ import project.annotations.ProcessAPI; // Ensure annotation exists and is correc
 /**
  * Smoke test for DataStorageAPI 
  */
-class DataStorageAPITest {
+class TestDataStorageAPI {
 
     @Mock
     private DataStorageAPI dataStorageAPI;
