@@ -1,4 +1,4 @@
-import annotations.ConceptualAPIPrototype;
+import project.annotations.ConceptualAPIPrototype;
 
 public class DigitalRootPersistenceAPIPrototype implements DigitalRootPersistenceAPI {
 
