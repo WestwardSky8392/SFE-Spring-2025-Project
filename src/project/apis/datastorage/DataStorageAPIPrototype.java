@@ -1,6 +1,6 @@
-package project.APIs.DataStorage;
+package project.apis.datastorage;
 
-import project.APIs.DataStorage.StorageComputeAPI;
+import project.apis.datastorage.StorageComputeAPI;
 import project.annotations.ProcessAPIPrototype;
 
 public class DataStorageAPIPrototype implements DataStorageAPI {
