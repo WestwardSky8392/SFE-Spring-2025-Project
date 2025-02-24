@@ -1,5 +1,5 @@
-import project.apis.StorageComputeAPI;
-import project.apis.DataStorageAPI; 
+import project.apis.datastorage.StorageComputeAPI;
+import project.apis.datastorage.DataStorageAPI; 
 import project.annotations.ProcessAPIPrototype;
 
 /**
