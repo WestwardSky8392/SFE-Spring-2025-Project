@@ -1,7 +1,5 @@
-package api.prototype;
-
 import api.StorageComputeAPI;
-import api.DataStoreAPI; // Added missing import
+import api.DataStorageAPI; 
 import annotations.ProcessAPIPrototype;
 
 /**
@@ -11,22 +9,22 @@ import annotations.ProcessAPIPrototype;
  */
 public class ImplementDataStorage implements StorageComputeAPI {
     
-    // Dependency: DataStoreAPI (if required for actual implementation)
-    private DataStoreAPI dataStoreAPI; 
+    // DataStorageAPI reference 
+    private DataStorageAPI dataStorageAPI; 
 
     /**
      * Default constructor for test purposes.
      */
     public ImplementDataStorage() {
-        this.dataStoreAPI = null; // Placeholder
+        this.dataStorageAPI = null; // Placeholder
     }
 
     /**
      * Constructor to initialize dependencies.
-     * @param dataStoreAPI The data store API that this component interacts with.
+     * @param dataStorageAPI The data storage API that this component interacts with.
      */
-    public ImplementDataStorage(DataStoreAPI dataStoreAPI) { // Fixed constructor name
-        this.dataStoreAPI = dataStoreAPI;
+    public ImplementDataStorage(DataStorageAPI dataStorageAPI) {
+        this.dataStorageAPI = dataStorageAPI;
     }
 
     /**
