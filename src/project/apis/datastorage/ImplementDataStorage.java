@@ -1,6 +1,6 @@
-import api.StorageComputeAPI;
-import api.DataStorageAPI; 
-import annotations.ProcessAPIPrototype;
+import project.apis.StorageComputeAPI;
+import project.apis.DataStorageAPI; 
+import project.annotations.ProcessAPIPrototype;
 
 /**
  * Prototype implementation of the StorageComputeAPI.
