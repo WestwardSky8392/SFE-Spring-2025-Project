@@ -1,6 +1,6 @@
 package project.apis.api_dataconnections;
 
-import annotations.ConceptualAPIPrototype;
+import project.annotations.ConceptualAPIPrototype;
 
 /**
  * Implementation of the DigitalRootPersistenceAPI.
