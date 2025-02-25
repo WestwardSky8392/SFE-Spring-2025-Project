@@ -1,3 +1,5 @@
+package test.project.annotations;
+
 /**
  * Test-only implementation of the InputConfig interface.
  * Provides an in-memory list of integers for input.
