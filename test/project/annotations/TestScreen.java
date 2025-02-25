@@ -1,6 +1,5 @@
-package project.annotations.NetworkAPI;
+package test.project.annotations;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -8,23 +7,28 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import project.apis.networkapi.Screen;
+import project.apis.networkapi.AskUser;
+import project.apis.networkapi.Window;
+
 /**
- * Unit test for the Screen interface.
- * Ensures that showWindow() correctly interacts with AskUser and returns a Window instance.
+ * Test for Screen-related functionality.
+ * This test mocks the dependencies (Screen, AskUser, Window) and verifies the interactions.
  */
 public class TestScreen {
 
     @Mock
     private Screen mockScreen;
-
+    
     @Mock
     private AskUser mockAskUser;
-
+    
     @Mock
     private Window mockWindow;
 
     /**
-     * Sets up the mock dependencies before each test.
+     * Sets up test dependencies before each test.
+     * Initializes Mockito mocks.
      */
     @BeforeEach
     void setUp() {
@@ -32,18 +36,18 @@ public class TestScreen {
     }
 
     /**
-     * Tests that showWindow() correctly returns a Window instance.
+     * Tests the showWindow() method of Screen interface.
      */
     @Test
     void testShowWindow() {
-        // Arrange
+        // Arrange: mock the behavior of the showWindow method.
         when(mockScreen.showWindow(mockAskUser)).thenReturn(mockWindow);
-
-        // Act
+        
+        // Act: call the method being tested.
         Window result = mockScreen.showWindow(mockAskUser);
 
-        // Assert
-        assertEquals(mockWindow, result, "showWindow should return the expected Window instance.");
+        // Assert: verify the expected behavior.
+        assertEquals(mockWindow, result, "The returned Window should be the one mocked.");
         verify(mockScreen).showWindow(mockAskUser);
     }
 }
