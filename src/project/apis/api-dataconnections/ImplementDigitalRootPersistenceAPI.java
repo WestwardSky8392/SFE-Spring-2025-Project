@@ -1,6 +1,6 @@
-package project.apis.api-dataconnections;
+package project.apis.api_dataconnections;
 
-import project.apis.api-dataconnections.DigitalRootPersistenceAPI; 
+import project.apis.api_dataconnections.DigitalRootPersistenceAPI; 
 import project.annotations.ConceptualAPIPrototype;
 
 /**
