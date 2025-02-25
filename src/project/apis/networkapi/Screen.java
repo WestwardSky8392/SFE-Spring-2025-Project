@@ -1,4 +1,6 @@
-package project.annotations.NetworkAPI;
+import project.apis.networkapi.AskUser;
+import project.apis.networkapi.Window;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
