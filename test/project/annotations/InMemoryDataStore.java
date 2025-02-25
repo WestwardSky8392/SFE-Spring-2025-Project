@@ -1,5 +1,22 @@
 package test.project.annotations;
 
+import java.util.List;  
+
+// Mock of InputConfig
+interface InputConfig {
+    List<Integer> getInput();
+}
+
+// Mock of OutputConfig
+interface OutputConfig {
+    void writeOutput(String output);
+}
+
+// Mock of DataStore
+interface DataStore {
+    void processData();
+}
+
 /**
  * Test-only implementation of the DataStore interface.
  * Processes input data and writes results to output.
