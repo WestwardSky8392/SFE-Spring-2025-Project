@@ -1,3 +1,5 @@
+package test.project.annotations;
+
 /**
  * Test-only implementation of the OutputConfig interface.
  * Provides an in-memory list of strings to write output to.
