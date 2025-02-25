@@ -13,6 +13,7 @@ import project.apis.networkapi.Screen;
 import project.apis.networkapi.SendInfo;
 import project.apis.networkapi.ValidInfo;
 import project.apis.networkapi.Window;
+import project.apis.networkapi.ImplementNetworkAPI; // Ensure this import exists
 
 /**
  * Smoke test for ImplementNetworkAPI.
@@ -42,7 +43,7 @@ public class TestImplementNetworkAPI {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        networkAPI = new ImplementNetworkAPI(mockScreen);
+        networkAPI = new ImplementNetworkAPI(mockScreen);  // Make sure ImplementNetworkAPI exists
     }
 
     /**
