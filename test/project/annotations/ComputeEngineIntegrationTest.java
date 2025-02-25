@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import project.src.project.apis.api_dataconnections.ImplementDigitalRootPersistenceAPI;
+import project.src.project.apis.computeapi.ImplementDigitalRootPersistenceAPI;
 import project.src.project.apis.datastorage.ImplementDataStorage;
-import project.src.project.apis.api_dataconnections.DigitalRootPersistenceAPI; 
+import project.src.project.apis.computeapi.DigitalRootPersistenceAPI; 
 
 // Assuming these interfaces exist:
 import project.test.project.annotations.InMemoryDataStore;
