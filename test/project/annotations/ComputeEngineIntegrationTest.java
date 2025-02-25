@@ -6,9 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import project.apis.computeapi.ImplementDigitalRootPersistenceAPI;
-import project.apis.datastorage.ImplementDataStorage;
-import project.apis.computeapi.DigitalRootPersistenceAPI; 
-
+import project.apis.computeapi.DigitalRootPersistenceAPI;
 
 import test.project.annotations.InMemoryDataStore;
 import test.project.annotations.InMemoryInputConfig;
@@ -28,7 +26,7 @@ import test.project.annotations.InMemoryInputConfig;
 public class ComputeEngineIntegrationTest {
 
     /**
-     * Simple in-memory implementation of OutputConfig to collect outputs.
+     * implementation of OutputConfig 
      */
     private static class TestOutputConfig implements OutputConfig {
         private List<String> outputs = new java.util.ArrayList<>();
@@ -57,23 +55,12 @@ public class ComputeEngineIntegrationTest {
         // DigitalRootPersistenceAPI processes individual numbers.
         DigitalRootPersistenceAPI digitalRootEngine = new ImplementDigitalRootPersistenceAPI();
         
-        // Optionally, if you want to include the StorageComputeAPI component:
-        // ImplementDataStorage dataStorage = new ImplementDataStorage(dataStore);
-        // (For now, its methods are placeholders.)
-        
-        
-        // Here we simulate what the complete engine would eventually do:
-        // For each input number, process it using the digital root engine
         // and write the result to the output.
         for (Integer num : inputList) {
             String result = digitalRootEngine.processDigitalRootPersistence(num);
             outputConfig.writeOutput(result);
         }
     
-        //  note: InMemoryDataStore's processData() in this example writes "Processed: <num>"
-        // which is not what we expect from the digital root engine.
-      
-        // We expect that for each input, the output is the placeholder response.
         List<String> expectedOutputs = Arrays.asList(
             "Processing not yet implemented.",
             "Processing not yet implemented.",
