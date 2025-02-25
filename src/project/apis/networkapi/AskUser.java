@@ -1,4 +1,3 @@
-package project.annotations.NetworkAPI;
 package project.apis.networkapi;
 
 public class AskUser {
