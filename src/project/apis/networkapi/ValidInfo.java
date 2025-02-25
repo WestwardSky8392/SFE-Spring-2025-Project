@@ -1,4 +1,3 @@
-package project.annotations.NetworkAPI;
 package project.apis.networkapi;
 
 import project.annotations.ProcessAPIPrototype;
