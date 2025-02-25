@@ -7,7 +7,7 @@ import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import project.apis.api_dataconnections.DigitalRootPersistenceAPI;
+import project.apis.computeapi.DigitalRootPersistenceAPI;
 
 class TestDigitalRootPersistenceAPI {
 
