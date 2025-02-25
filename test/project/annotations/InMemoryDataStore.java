@@ -1,29 +1,14 @@
 package test.project.annotations;
 
-import java.util.List;  
-
-// Mock of InputConfig
-interface InputConfig {
-    List<Integer> getInput();
-}
-
-// Mock of OutputConfig
-interface OutputConfig {
-    void writeOutput(String output);
-}
-
-// Mock of DataStore
-interface DataStore {
-    void processData();
-}
+import java.util.List;
 
 /**
  * Test-only implementation of the DataStore interface.
  * Processes input data and writes results to output.
  */
 public class InMemoryDataStore implements DataStore {
-    private InputConfig inputConfig;
-    private OutputConfig outputConfig;
+    private InputConfig inputConfig;  // Using the InputConfig interface
+    private OutputConfig outputConfig;  // Using the OutputConfig interface
 
     /**
      * Constructor to initialize the DataStore with input and output configurations.
