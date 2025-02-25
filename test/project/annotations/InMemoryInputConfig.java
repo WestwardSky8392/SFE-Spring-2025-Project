@@ -1,12 +1,22 @@
 package test.project.annotations;
 
+import java.util.List;
+
+/**
+ * Mock interface representing an input configuration.
+ * This is created for testing purposes only.
+ */
+interface InputConfig { // Removed 'public' so it can be in the same file
+    List<Integer> getInput();
+}
+
 /**
  * Test-only implementation of the InputConfig interface.
  * Provides an in-memory list of integers for input.
  */
 public class InMemoryInputConfig implements InputConfig {
     private List<Integer> inputList;
-    
+
     /**
      * Constructor to initialize the in-memory input list.
      * @param inputList The list of integers to use as input.
