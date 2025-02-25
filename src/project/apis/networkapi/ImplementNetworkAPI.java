@@ -6,7 +6,6 @@ import project.apis.networkapi.Window;
 import project.apis.networkapi.SendInfo;
 import project.apis.networkapi.ValidInfo;
 
-
 /**
  * Prototype implementation of the NetworkAPI.
  * This is a placeholder implementation that does not perform actual network operations.
