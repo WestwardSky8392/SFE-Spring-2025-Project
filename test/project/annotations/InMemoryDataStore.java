@@ -1,3 +1,5 @@
+package test.project.annotations;
+
 /**
  * Test-only implementation of the DataStore interface.
  * Processes input data and writes results to output.
