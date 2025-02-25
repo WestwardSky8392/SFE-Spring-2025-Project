@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import project.src.project.apis.computeapi.ImplementDigitalRootPersistenceAPI;
-import project.src.project.apis.datastorage.ImplementDataStorage;
-import project.src.project.apis.computeapi.DigitalRootPersistenceAPI; 
+import src.project.apis.computeapi.ImplementDigitalRootPersistenceAPI;
+import src.project.apis.datastorage.ImplementDataStorage;
+import src.project.apis.computeapi.DigitalRootPersistenceAPI; 
 
-// Assuming these interfaces exist:
-import project.test.project.annotations.InMemoryDataStore;
-import project.test.project.annotations.InMemoryInputConfig;
+
+import test.project.annotations.InMemoryDataStore;
+import test.project.annotations.InMemoryInputConfig;
 
 /**
  * Integration test that connects the compute engine components.
