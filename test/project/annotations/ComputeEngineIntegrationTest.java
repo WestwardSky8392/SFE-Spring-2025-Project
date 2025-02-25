@@ -10,23 +10,13 @@ import project.apis.computeapi.DigitalRootPersistenceAPI;
 
 import test.project.annotations.InMemoryDataStore;
 import test.project.annotations.InMemoryInputConfig;
+import test.project.annotations.DataStore;  
+import test.project.annotations.OutputConfig;
 
-/**
- * Integration test that connects the compute engine components.
- * <p>
- * This test uses the placeholder implementations for:
- * - DigitalRootPersistenceAPI (data-connections)
- * - StorageComputeAPI (datastorage, via InMemoryDataStore)
- * 
- * The test provides the initial input [1, 10, 25] (with no delimiter)
- * and asserts that the output is consistent with what the compute engine
- * will eventually compute. Since the engine is not implemented yet,
- * this test is expected to fail for now - Ced
- */
 public class ComputeEngineIntegrationTest {
 
     /**
-     * implementation of OutputConfig 
+     * Implementation of OutputConfig 
      */
     private static class TestOutputConfig implements OutputConfig {
         private List<String> outputs = new java.util.ArrayList<>();
@@ -35,7 +25,7 @@ public class ComputeEngineIntegrationTest {
         public void writeOutput(String data) {
             outputs.add(data);
         }
-        
+
         public List<String> getOutputs() {
             return outputs;
         }
@@ -47,20 +37,20 @@ public class ComputeEngineIntegrationTest {
         List<Integer> inputList = Arrays.asList(1, 10, 25);
         InputConfig inputConfig = new InMemoryInputConfig(inputList);
         TestOutputConfig outputConfig = new TestOutputConfig();
-        
+
         // Set up the test-only data store with our input and output configurations.
         DataStore dataStore = new InMemoryDataStore(inputConfig, outputConfig);
-        
+
         // Initialize the compute engine components.
         // DigitalRootPersistenceAPI processes individual numbers.
         DigitalRootPersistenceAPI digitalRootEngine = new ImplementDigitalRootPersistenceAPI();
-        
+
         // and write the result to the output.
         for (Integer num : inputList) {
             String result = digitalRootEngine.processDigitalRootPersistence(num);
             outputConfig.writeOutput(result);
         }
-    
+
         List<String> expectedOutputs = Arrays.asList(
             "Processing not yet implemented.",
             "Processing not yet implemented.",
