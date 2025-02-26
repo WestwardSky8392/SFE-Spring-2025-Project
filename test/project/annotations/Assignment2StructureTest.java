@@ -12,6 +12,13 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import project.annotations.ConceptualAPI;
+import project.annotations.ProcessAPI;
+import project.annotations.NetworkAPI;
+import project.annotations.ConceptualAPIPrototype;
+import project.annotations.ProcessAPIPrototype;
+import project.annotations.NetworkAPIPrototype;
+
 /**
  * This test checks that all 3 APIs exist in the 'src' folder as interfaces, with the appropriate annotations, and that they all
  * have corresponding prototypes, also with the appropriate annotations.
@@ -23,76 +30,73 @@ import org.junit.jupiter.params.provider.ValueSource;
  */
 public class Assignment2StructureTest {
 
-	private project.annotations.Utils Utils;
+    private project.annotations.Utils Utils;
 
-	@ParameterizedTest
-	@MethodSource("providePrototypeParams")
-	public void checkPrototypesExist(Class<? extends Annotation> apiAnnotation, Class<? extends Annotation> prototypeAnnotation) throws Exception {
-		int numPrototypesFound = 0;
-		List<String> errors = new ArrayList<>();
-		for (Class<?> clazz : Utils.loadAllClasses()) {
-			if (!clazz.isInterface() && !clazz.isEnum() && !clazz.isAnnotation()) {
-				for (Method m : clazz.getDeclaredMethods()) {
-					if (m.isAnnotationPresent(prototypeAnnotation)) {
-					    numPrototypesFound++;
-						Parameter[] parameters = m.getParameters();
-						if (parameters.length != 1) {
-							errors.add("Prototype method should have a single parameter, the API being prototyped. "
-									+ "If you need other data to simulate classes/objects that the client will receive from elsewhere"
-									+ " (a website form, another componenet, etc), just create those as local variables set to null/0 for now. "
-									+ "We'll cover mock objects for the next assignment");
-						} else {
-							Parameter param = parameters[0];
-							if (!param.getType().isAnnotationPresent(apiAnnotation)) {
-								errors.add("Prototype method should have a single parameter, the API being prototyped. "
-										+ "Make sure your API interface has the appropriate annotation!");
-							}
-						}
-					}
-				}
-			}
+    @ParameterizedTest
+    @MethodSource("providePrototypeParams")
+    public void checkPrototypesExist(Class<? extends Annotation> apiAnnotation, Class<? extends Annotation> prototypeAnnotation) throws Exception {
+        int numPrototypesFound = 0;
+        List<String> errors = new ArrayList<>();
+        for (Class<?> clazz : Utils.loadAllClasses()) {
+            if (!clazz.isInterface() && !clazz.isEnum() && !clazz.isAnnotation()) {
+                for (Method m : clazz.getDeclaredMethods()) {
+                    if (m.isAnnotationPresent(prototypeAnnotation)) {
+                        numPrototypesFound++;
+                        Parameter[] parameters = m.getParameters();
+                        if (parameters.length != 1) {
+                            errors.add("Prototype method should have a single parameter, the API being prototyped. "
+                                    + "If you need other data to simulate classes/objects that the client will receive from elsewhere"
+                                    + " (a website form, another component, etc), just create those as local variables set to null/0 for now. "
+                                    + "We'll cover mock objects for the next assignment");
+                        } else {
+                            Parameter param = parameters[0];
+                            if (!param.getType().isAnnotationPresent(apiAnnotation)) {
+                                errors.add("Prototype method should have a single parameter, the API being prototyped. "
+                                        + "Make sure your API interface has the appropriate annotation!");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (numPrototypesFound != 1) {
+            errors.add("No (or multiple) class method with the " + prototypeAnnotation.getSimpleName() + " annotation was found in 'src'");
+        }
+        if (!errors.isEmpty()) {
+            throw new IllegalStateException(errors.toString());
+        }
+    }
 
-		}
-		if (numPrototypesFound != 1) {
-			errors.add("No (or multiple) class method with the " + prototypeAnnotation.getSimpleName() + " annotation was found in 'src'");
-		}
-		if (!errors.isEmpty()) {
-			throw new IllegalStateException(errors.toString());
-		}
-	}
+    private static Stream<Arguments> providePrototypeParams() {
+        return Stream.of(
+                Arguments.of(ConceptualAPI.class, ConceptualAPIPrototype.class),
+                Arguments.of(ProcessAPI.class, ProcessAPIPrototype.class),
+                Arguments.of(NetworkAPI.class, NetworkAPIPrototype.class)
+        );
+    }
 
-	private static Stream<Arguments> providePrototypeParams() {
-	    return Stream.of(
-	            Arguments.of(project.annotations.ConceptualAPI.class, ConceptualAPIPrototype.class),
-	            Arguments.of(project.annotations.ProcessAPI.class, ProcessAPIPrototype.class),
-	            Arguments.of(annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, NetworkAPIPrototype.class)
-	    );
-	}
+    @ParameterizedTest
+    @ValueSource(classes = {NetworkAPI.class, ProcessAPI.class, ConceptualAPI.class})
+    public void checkAnnotationsExist(Class<? extends Annotation> apiAnnotation) throws Exception {
+        int numApisFound = 0;
 
-	@ParameterizedTest
-	@ValueSource(classes = {annotations.src.project.annotations.NetworkAPI.NetworkAPIPrototype.NetworkAPI.class, ProcessAPI.class, ConceptualAPI.class })
-	public void checkAnnotationsExist(Class<? extends Annotation> apiAnnotation) throws Exception {
-		int numApisFound = 0;
+        for (Class<?> clazz : Utils.loadAllClasses()) {
+            if (clazz.isInterface()) {
+                if (clazz.isAnnotationPresent(apiAnnotation)) {
+                    numApisFound++;
+                }
+            }
+        }
 
-		for (Class<?> clazz : Utils.loadAllClasses()) {
-			if (clazz.isInterface()) {
-				if (clazz.isAnnotationPresent(apiAnnotation)) {
-				    numApisFound++;
-				}
-			}
-		}
+        List<String> errors = new ArrayList<>();
 
-		List<String> errors = new ArrayList<>();
-
-		if (numApisFound != 1) {
-			errors.add("No (or multiple) interface found with annotation " + apiAnnotation.getSimpleName() + " in 'src'");
-			errors.add("Keep in mind that all APIs must be interfaces (not classes), and that each API annotation"
-					+ " must be on a different interface in its own .java file");
-		}
-		if (!errors.isEmpty()) {
-			throw new IllegalStateException(errors.toString());
-		}
-	}
-
-
+        if (numApisFound != 1) {
+            errors.add("No (or multiple) interface found with annotation " + apiAnnotation.getSimpleName() + " in 'src'");
+            errors.add("Keep in mind that all APIs must be interfaces (not classes), and that each API annotation"
+                    + " must be on a different interface in its own .java file");
+        }
+        if (!errors.isEmpty()) {
+            throw new IllegalStateException(errors.toString());
+        }
+    }
 }
