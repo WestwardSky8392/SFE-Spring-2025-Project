@@ -29,16 +29,16 @@ public class Main {
         // Add your test logic for storing data
         System.out.println("Testing Store Data...");
         // Example assertions
-        // api.storeData("key", "value");
-        // assert "value".equals(api.retrieveData("key")) : "Store Data failed";
+        api.storeData("key", "value");
+        assert "value".equals(api.retrieveData("key")) : "Store Data failed";
     }
 
     private static void testRetrieveData(TestDataStorageAPI api) {
         // Add your test logic for retrieving data
         System.out.println("Testing Retrieve Data...");
         // Example assertions
-        // api.storeData("key", "value");
-        // String value = api.retrieveData("key");
-        // assert "value".equals(value) : "Retrieve Data failed";
+         api.storeData("key", "value");
+         String value = api.retrieveData("key");
+         assert "value".equals(value) : "Retrieve Data failed";
     }
 }
