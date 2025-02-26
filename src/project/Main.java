@@ -1,5 +1,8 @@
 package project;
 
+// Import the TestDataStorageAPI class
+import test.project.TestDataStorageAPI;
+
 public class Main {
     public static void main(String[] args) {
         TestDataStorageAPI testDataStorageAPI = new TestDataStorageAPI();
