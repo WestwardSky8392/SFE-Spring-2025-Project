@@ -1,3 +1,5 @@
+package test.project.annotations;
+
 import project.apis.datastorage.StorageComputeAPI;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

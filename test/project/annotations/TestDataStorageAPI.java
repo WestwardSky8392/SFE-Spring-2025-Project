@@ -1,4 +1,6 @@
-package project.apis.datastorage;
+package test.project.annotations;
+
+import project.apis.datastorage.DataStorageAPI;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;

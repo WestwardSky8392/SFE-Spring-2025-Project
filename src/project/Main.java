@@ -1,44 +1,77 @@
 package project;
 
-// Import the TestDataStorageAPI class
-import test.project.TestDataStorageAPI;
+import project.apis.computeapi.ImplementDigitalRootPersistenceAPI;
+import project.apis.datastorage.ImplementDataStorage;
+import project.apis.datastorage.ImplementDataStorageAPI;
 
+/**
+ * Main class to test the implementations.
+ */
 public class Main {
     public static void main(String[] args) {
-        TestDataStorageAPI testDataStorageAPI = new TestDataStorageAPI();
+        testDigitalRootPersistenceAPI();
+        testDataStorageAPI();
+        testStorageComputeAPI();
+    }
+    
+    /**
+     * Tests the DigitalRootPersistenceAPI implementation.
+     */
+    private static void testDigitalRootPersistenceAPI() {
+        // Test DigitalRootPersistenceAPI
+        ImplementDigitalRootPersistenceAPI api = new ImplementDigitalRootPersistenceAPI();
         
-        // Example of running tests
-        System.out.println("Running Tests...");
-
-        // Add your test methods here
-        testConstructor(testDataStorageAPI);
-        testStoreData(testDataStorageAPI);
-        testRetrieveData(testDataStorageAPI);
-
-        System.out.println("All tests completed.");
+        // Test cases from the test class
+        int[] testNumbers = {9875, 12345, 999, 0, 1, 77};
+        String[] expectedResults = {"2", "6", "9", "0", "1", "5"};
+        
+        System.out.println("Testing DigitalRootPersistenceAPI:");
+        for (int i = 0; i < testNumbers.length; i++) {
+            String result = api.processDigitalRootPersistence(testNumbers[i]);
+            System.out.println("Input: " + testNumbers[i] + ", Expected: " + expectedResults[i] + ", Actual: " + result);
+        }
+        System.out.println();
     }
-
-    private static void testConstructor(TestDataStorageAPI api) {
-        // Add your test logic for the constructor
-        System.out.println("Testing Constructor...");
-        // Example assertions
-        // assert api != null : "Constructor failed";
+    
+    /**
+     * Tests the DataStorageAPI implementation.
+     */
+    private static void testDataStorageAPI() {
+        // Test DataStorageAPI
+        ImplementDataStorageAPI api = new ImplementDataStorageAPI();
+        
+        System.out.println("Testing DataStorageAPI:");
+        
+        // Test fetchData
+        String key = "testKey";
+        String value = api.fetchData(key);
+        System.out.println("fetchData(\"" + key + "\") = " + value);
+        
+        // Test storeData
+        key = "newKey";
+        value = "newValue";
+        api.storeData(key, value);
+        String retrievedValue = api.fetchData(key);
+        System.out.println("storeData(\"" + key + "\", \"" + value + "\")");
+        System.out.println("fetchData(\"" + key + "\") = " + retrievedValue);
+        System.out.println();
     }
-
-    private static void testStoreData(TestDataStorageAPI api) {
-        // Add your test logic for storing data
-        System.out.println("Testing Store Data...");
-        // Example assertions
-        api.storeData("key", "value");
-        assert "value".equals(api.retrieveData("key")) : "Store Data failed";
-    }
-
-    private static void testRetrieveData(TestDataStorageAPI api) {
-        // Add your test logic for retrieving data
-        System.out.println("Testing Retrieve Data...");
-        // Example assertions
-         api.storeData("key", "value");
-         String value = api.retrieveData("key");
-         assert "value".equals(value) : "Retrieve Data failed";
+    
+    /**
+     * Tests the StorageComputeAPI implementation.
+     */
+    private static void testStorageComputeAPI() {
+        // Test StorageComputeAPI
+        ImplementDataStorage api = new ImplementDataStorage();
+        
+        System.out.println("Testing StorageComputeAPI:");
+        
+        // Test writeData and readData
+        String destination = "testDest";
+        String data = "Sample Data";
+        api.writeData(destination, data);
+        String retrievedData = api.readData(destination);
+        System.out.println("writeData(\"" + destination + "\", \"" + data + "\")");
+        System.out.println("readData(\"" + destination + "\") = " + retrievedData);
     }
 }
