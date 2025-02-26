@@ -10,6 +10,7 @@ import java.nio.file.StandardOpenOption;
 /**
  * 
  * This implementation is used for unit testing purposes.
+ * project note: Should pass unit test and be able to read files now.
  */
 public class ImplementDataStorage implements StorageComputeAPI {
 
@@ -69,7 +70,7 @@ public class ImplementDataStorage implements StorageComputeAPI {
      */
     public String fetchData(String key) {
         // Implement logic to fetch data based on the key
-        return ""; // Placeholder implementation
+        return ""; // placeholder
     }
 
     /**
