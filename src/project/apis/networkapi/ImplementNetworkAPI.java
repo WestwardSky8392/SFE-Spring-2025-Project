@@ -1,11 +1,5 @@
 package project.apis.networkapi;
 
-import project.apis.networkapi.Screen;
-import project.apis.networkapi.AskUser;
-import project.apis.networkapi.Window;
-import project.apis.networkapi.SendInfo;
-import project.apis.networkapi.ValidInfo;
-
 /**
  * Prototype implementation of the NetworkAPI.
  * This class uses a Screen dependency to handle UI interactions.

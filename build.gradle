@@ -15,7 +15,7 @@ sourceSets {
                 'src/project/apis',                // apis package
                 'src/project/apis/datastorage',    // datastorage API
                 'src/project/apis/networkapi',     // networkapi API
-                'src/project/apis/api-dataconnections'  // api-dataconnections API
+                'src/project/apis/computeapi'  // compute API
             ]
         }
     }

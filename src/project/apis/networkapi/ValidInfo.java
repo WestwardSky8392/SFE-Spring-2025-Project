@@ -1,6 +1,7 @@
 package project.apis.networkapi;
 
-import project.annotations.ProcessAPIPrototype;
+import project.apis.networkapi.AskUser;
+import project.apis.networkapi.SendInfo;
 
 public class ValidInfo {
     AskUser validInt;

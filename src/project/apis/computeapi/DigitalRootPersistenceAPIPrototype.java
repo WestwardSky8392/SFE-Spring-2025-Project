@@ -1,8 +1,5 @@
 package project.apis.computeapi;
 
-import project.apis.computeapi.DigitalRootPersistenceAPI; 
-import project.annotations.ConceptualAPIPrototype;
-
 public class DigitalRootPersistenceAPIPrototype implements DigitalRootPersistenceAPI {
 
     @Override

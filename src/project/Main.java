@@ -1,7 +1,6 @@
 package project;
 
-// Import the TestDataStorageAPI class
-import test.project.TestDataStorageAPI;
+import test.project.annotations.TestDataStorageAPI;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +21,7 @@ public class Main {
         // Add your test logic for the constructor
         System.out.println("Testing Constructor...");
         // Example assertions
-        // assert api != null : "Constructor failed";
+        assert api != null : "Constructor failed";
     }
 
     private static void testStoreData(TestDataStorageAPI api) {
@@ -37,8 +36,8 @@ public class Main {
         // Add your test logic for retrieving data
         System.out.println("Testing Retrieve Data...");
         // Example assertions
-         api.storeData("key", "value");
-         String value = api.retrieveData("key");
-         assert "value".equals(value) : "Retrieve Data failed";
+        api.storeData("key", "value");
+        String value = api.retrieveData("key");
+        assert "value".equals(value) : "Retrieve Data failed";
     }
 }
