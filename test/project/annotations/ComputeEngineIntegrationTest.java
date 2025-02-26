@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test;
 
 import project.apis.computeapi.ImplementDigitalRootPersistenceAPI;
 import project.apis.computeapi.DigitalRootPersistenceAPI;
-
-import test.project.annotations.InMemoryDataStore;
-import test.project.annotations.InMemoryInputConfig;
-import test.project.annotations.DataStore;  
-import test.project.annotations.OutputConfig;
+import project.annotations.InputConfig;
+import project.annotations.InMemoryInputConfig;
+import project.annotations.DataStore;
+import project.annotations.OutputConfig;
+import project.annotations.InMemoryDataStore;
 
 public class ComputeEngineIntegrationTest {
 
