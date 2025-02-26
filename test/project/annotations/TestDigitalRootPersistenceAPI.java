@@ -1,4 +1,4 @@
-package project.apis.datastorage;
+package test.project.annotations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

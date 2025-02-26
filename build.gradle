@@ -1,71 +1,61 @@
 plugins {
-    id 'com.google.protobuf' version '0.9.4'
-}
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-eclipse.project.name = 'SEProjectFramework'
-
-sourceSets {
-    main {
-        java {
-            srcDirs = [
-                'src',                             // Root source directory
-                'src/project/annotations',         // annotations package
-                'src/project/apis',                // apis package
-                'src/project/apis/datastorage',    // datastorage API
-                'src/project/apis/networkapi',     // networkapi API
-                'src/project/apis/api-dataconnections'  // api-dataconnections API
-            ]
-        }
-    }
-    test {
-        java {
-            srcDirs = [
-                'test/project/annotations'
-            ]
-        }
-    }
+    id 'java'
+    id 'application'
 }
 
 repositories {
     mavenCentral()
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'src'
+        }
+    }
+    test {
+        java {
+            srcDir 'test'
+        }
+        resources {
+            srcDir 'test'
+        }
+    }
+}
+
+dependencies {
+    // JUnit Jupiter API and Engine
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
+    
+    // JUnit Platform
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.10.2'
+    
+    // Mockito
+    testImplementation 'org.mockito:mockito-core:5.10.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.10.0'
+}
+
 test {
     useJUnitPlatform()
     
-      filter {
+    filter {
         excludeTestsMatching "project.annotations.Assignment*"
-      }
+    }
+    
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
-def grpcVersion = '1.59.1'
-def protobufVersion = '3.25.1'
-def protocVersion = protobufVersion
-
-dependencies {
-    implementation "io.grpc:grpc-protobuf:${grpcVersion}"
-    implementation "io.grpc:grpc-services:${grpcVersion}"
-    implementation "io.grpc:grpc-stub:${grpcVersion}"
-    compileOnly "org.apache.tomcat:annotations-api:6.0.53"
-
-    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
-
-    testImplementation "io.grpc:grpc-testing:${grpcVersion}"
-    testImplementation "io.grpc:grpc-inprocess:${grpcVersion}"
-
-    testImplementation('junit:junit:4.12')
-    testImplementation('org.junit.jupiter:junit-jupiter:5.10.2')
-	testImplementation('org.mockito:mockito-core:5.10.0')
-}
-
-protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
-    plugins {
-        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
-    }
-    generateProtoTasks {
-        all()*.plugins { grpc {} }
-    }
+application {
+    mainClass = 'project.Main'
 }
