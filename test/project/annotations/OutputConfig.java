@@ -1,4 +1,4 @@
-package test.project.annotations;
+package project.annotations;
 
 /**
  * Mock interface representing an output configuration.
