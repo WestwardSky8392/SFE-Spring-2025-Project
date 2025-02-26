@@ -1,5 +1,7 @@
 package test.project.annotations;
 
+import project.annotations.InMemoryOutputConfig;
+import project.annotations.OutputConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import static org.mockito.Mockito.*;
 
 public class InMemoryOutputConfigTest {
     private InMemoryOutputConfig inMemoryOutputConfig;
-    private ArrayList<String> mockOutputList; 
+    private ArrayList<String> mockOutputList;
     private OutputConfig mockOutputConfig;
 
     @BeforeEach
