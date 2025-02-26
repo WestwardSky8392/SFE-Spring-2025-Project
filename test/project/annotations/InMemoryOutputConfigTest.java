@@ -1,7 +1,7 @@
 package test.project.annotations;
 
-import project.annotations.InMemoryOutputConfig;
-import project.annotations.OutputConfig;
+import project.annotations.InMemoryOutputConfig; 
+import project.annotations.OutputConfig; 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
