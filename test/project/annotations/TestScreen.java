@@ -1,6 +1,7 @@
-package test.project.annotations;
+package project.annotations;
 
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -47,7 +48,7 @@ public class TestScreen {
         Window result = mockScreen.showWindow(mockAskUser);
 
         // Assert: verify the expected behavior.
-        assertEquals(mockWindow, result, "The returned Window should be the one mocked.");
+        assertSame(mockWindow, result, "The returned Window should be the one mocked.");
         verify(mockScreen).showWindow(mockAskUser);
     }
 }
