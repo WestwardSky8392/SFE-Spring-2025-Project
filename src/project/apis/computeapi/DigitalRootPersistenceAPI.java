@@ -1,5 +1,4 @@
 package project.apis.computeapi;
-
 import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
