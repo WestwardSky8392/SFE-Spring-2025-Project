@@ -14,7 +14,8 @@ public class Computation {
     public void setUserInput(String newInput){
         userInput = newInput;
     }
-
+     
+    //Compute Logic (Digital Root Persistence)
     public String computeUserInput(int number){
         String numberConvert = String.valueOf(number);
         int total = 0;
