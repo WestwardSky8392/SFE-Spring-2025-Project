@@ -1,4 +1,4 @@
-public class SimpleCompute implements Compute {
+public class simpleCompute implements Compute {
     @Override
     public int[] processData(int[] inputData) {
         // A simple computation: multiply each element by 2
