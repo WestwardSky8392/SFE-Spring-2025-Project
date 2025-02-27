@@ -13,7 +13,7 @@ public class SimpleDataStorage implements DataStorage {
     public void writeData(String location, int[] results) throws Exception {
         System.out.println("Writing results to location " + location + ": ");
         for (int result : results) {
-            System.out.print(result + " ");
+            System.out.print(result + "   ");
         }
         System.out.println();
     }

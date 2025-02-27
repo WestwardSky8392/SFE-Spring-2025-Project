@@ -1,5 +1,5 @@
 package project.apis.computeapi;
-public class CoordinationComponent {
+public class coordination{
     private DataStorage dataStorage;
     private Compute compute;
 
