@@ -21,12 +21,12 @@ public class ImplementDataStorage implements StorageComputeAPI {
      * Default constructor for test purposes.
      */
     public ImplementDataStorage() {
-        this.dataStorageAPI = null; // Placeholder
+        this.dataStorageAPI = null;
     }
 
     /**
-     * Constructor to initialize dependencies.
-     * @param dataStorageAPI The data storage API that this component interacts with.
+     * Constructor with DataStorageAPI parameter.
+     * @param dataStorageAPI The DataStorageAPI instance to use.
      */
     public ImplementDataStorage(DataStorageAPI dataStorageAPI) {
         this.dataStorageAPI = dataStorageAPI;
@@ -79,6 +79,6 @@ public class ImplementDataStorage implements StorageComputeAPI {
      * @param value The data to store.
      */
     public void storeData(String key, String value) {
-        //  logic to store data based on the key, not here for now, not meant for unit testing
+        // logic to store data based on the key, not here for now, not meant for unit testing
     }
 }
