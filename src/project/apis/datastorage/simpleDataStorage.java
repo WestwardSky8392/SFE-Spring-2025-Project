@@ -8,7 +8,7 @@ public class SimpleDataStorage implements DataStorage {
         }
         return data;
     }
-
+    //overide below
     @Override
     public void writeData(String location, int[] results) throws Exception {
         System.out.println("Writing results to location " + location + ": ");
