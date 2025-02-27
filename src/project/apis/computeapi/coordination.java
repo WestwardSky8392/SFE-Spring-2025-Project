@@ -20,10 +20,10 @@ public class CoordinationComponent {
             // Step 3: Write the results back to the data storage
             dataStorage.writeData(outputLocation, results);
             
-            // Return success message
+           //handles some errors
             return "Computation completed successfully!";
         } catch (Exception e) {
-            // Handle any errors
+           
             e.printStackTrace();
             return "An error occurred during the computation.";
         }
