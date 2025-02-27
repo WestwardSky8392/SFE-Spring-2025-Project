@@ -1,6 +1,8 @@
-public class CoordinationComponent {
+package project.apis.computeapi;
+ublic class CoordinationComponent {
     private DataStorage dataStorage;
     private Compute compute;
+
 
     // Constructor to initialize the components
     public CoordinationComponent(DataStorage dataStorage, Compute compute) {
