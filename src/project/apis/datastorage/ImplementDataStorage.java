@@ -1,84 +1,59 @@
+package project.apis.datastorage;
+
 import project.apis.datastorage.StorageComputeAPI;
-import project.apis.datastorage.DataStorageAPI;
+import project.apis.datastorage.DataStorageAPI; 
 import project.annotations.ProcessAPIPrototype;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-
 /**
- * 
- * This implementation is used for unit testing purposes.
- * project note: Should pass unit test and be able to read files now.
+ * Implementation of the StorageComputeAPI.
+ * This class provides functionality to read and write data using a DataStorageAPI.
  */
 public class ImplementDataStorage implements StorageComputeAPI {
-
+    
     // DataStorageAPI reference 
-    private DataStorageAPI dataStorageAPI;
+    private DataStorageAPI dataStorageAPI; 
 
     /**
      * Default constructor for test purposes.
+     * Initializes with a new ImplementDataStorageAPI instance.
      */
     public ImplementDataStorage() {
-        this.dataStorageAPI = null;
+        this.dataStorageAPI = new ImplementDataStorageAPI();
     }
 
     /**
-     * Constructor with DataStorageAPI parameter.
-     * @param dataStorageAPI The DataStorageAPI instance to use.
+     * Constructor to initialize dependencies.
+     * @param dataStorageAPI The data storage API that this component interacts with.
      */
     public ImplementDataStorage(DataStorageAPI dataStorageAPI) {
         this.dataStorageAPI = dataStorageAPI;
     }
 
     /**
-     * Reads data from the given source file.
-     * @param source The input source file path.
-     * @return The content of the file as a string.
+     * Reads data from the given source using the dataStorageAPI.
+     * @param source The input source identifier.
+     * @return The data read from the source, or an empty string if not found.
      */
     @Override
     @ProcessAPIPrototype
     public String readData(String source) {
-        try {
-            return new String(Files.readAllBytes(Paths.get(source)));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "";
+        if (dataStorageAPI == null) {
+            return ""; // Return empty string if dataStorageAPI is not initialized
         }
+        String data = dataStorageAPI.fetchData(source);
+        return data != null ? data : ""; // Return empty string if data is null
     }
 
     /**
-     * Writes data to the given destination file.
-     * @param destination The output destination file path.
+     * Writes data to the given destination using the dataStorageAPI.
+     * @param destination The output destination identifier.
      * @param data The data to write.
      */
     @Override
     @ProcessAPIPrototype
     public void writeData(String destination, String data) {
-        try {
-            Files.write(Paths.get(destination), data.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (dataStorageAPI != null) {
+            dataStorageAPI.storeData(destination, data);
         }
-    }
-
-    /**
-     * Fetches data associated with the given key.
-     * @param key The key to fetch data for.
-     * @return The associated data as a string.
-     */
-    public String fetchData(String key) {
-        // Implement logic to fetch data based on the key
-        return ""; // placeholder
-    }
-
-    /**
-     * Stores data with the given key.
-     * @param key The key to store data under.
-     * @param value The data to store.
-     */
-    public void storeData(String key, String value) {
-        // logic to store data based on the key, not here for now, not meant for unit testing
     }
 }
