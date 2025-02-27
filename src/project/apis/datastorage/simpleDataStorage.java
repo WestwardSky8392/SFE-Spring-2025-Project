@@ -1,4 +1,4 @@
-public class simpleimpleDataStorage implements DataStorage {
+public class simpleDataStorage implements DataStorage {
     @Override
     public int[] readData(String location) throws Exception {
         String[] stringData = location.split(",");
