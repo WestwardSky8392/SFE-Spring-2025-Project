@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 /**
- * Tests the CoordinationEngine class.
+ * Tests the CoordinationEngine 
  */
 public class CoordinationEngineTest {
 
@@ -39,7 +39,9 @@ public class CoordinationEngineTest {
         when(dataStorage.fetchData("inputKey")).thenReturn("12345");
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Computation completed successfully", result);
-        verify(dataStorage).storeData("outputKey", "6");
+        
+        // Print the actual arguments for debugging
+        verify(dataStorage).storeData(eq("outputKey"), eq("6"));
     }
 
     /**
