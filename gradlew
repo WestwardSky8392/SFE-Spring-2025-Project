@@ -246,4 +246,7 @@ eval "set -- $(
         tr '\n' ' '
     )" '"$@"'
 
+# Change the file permissions to make the script executable
+chmod +x /workspaces/SFE-Spring-2025-Project/gradlew
+
 exec "$JAVACMD" "$@"
