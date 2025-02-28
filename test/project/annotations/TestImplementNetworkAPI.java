@@ -1,4 +1,4 @@
-package test.project.annotations;
+package project.annotations;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

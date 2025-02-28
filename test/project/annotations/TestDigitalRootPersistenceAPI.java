@@ -1,4 +1,4 @@
-package test.project.annotations;
+package project.annotations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
