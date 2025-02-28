@@ -75,6 +75,4 @@ public class Main {
         System.out.println("writeData(\"" + destination + "\", \"" + data + "\")");
         System.out.println("readData(\"" + destination + "\") = " + retrievedData);
     }
-
-  
 }
