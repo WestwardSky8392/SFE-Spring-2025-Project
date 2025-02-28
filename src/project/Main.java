@@ -5,13 +5,14 @@ import project.apis.datastorage.ImplementDataStorage;
 import project.apis.datastorage.ImplementDataStorageAPI;
 
 /**
- * Main class to test the implementations.
+ * Main class to test the implementations
  */
 public class Main {
     public static void main(String[] args) {
         testDigitalRootPersistenceAPI();
         testDataStorageAPI();
         testStorageComputeAPI();
+    
     }
     
     /**
@@ -74,4 +75,6 @@ public class Main {
         System.out.println("writeData(\"" + destination + "\", \"" + data + "\")");
         System.out.println("readData(\"" + destination + "\") = " + retrievedData);
     }
+
+  
 }
