@@ -2,6 +2,7 @@ package project.annotations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
 import project.apis.computeapi.Computation;
@@ -26,7 +27,7 @@ public class CoordinationEngineTest {
     @BeforeEach
     public void setUp() {
         dataStorage = Mockito.mock(DataStorageAPI.class);
-        computation = new Computation("testInput");
+        computation = Mockito.mock(Computation.class);
         engine = new CoordinationEngine(dataStorage, computation);
     }
 
@@ -37,11 +38,11 @@ public class CoordinationEngineTest {
     @Test
     public void testStartComputationWithValidData() {
         when(dataStorage.fetchData("inputKey")).thenReturn("12345");
+        when(computation.computeUserInput(12345)).thenReturn("6");
+        
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Computation completed successfully", result);
-        
-        // Print the actual arguments for debugging
-        verify(dataStorage).storeData(eq("outputKey"), eq("6"));
+        verify(dataStorage).storeData("outputKey", "6");
     }
 
     /**

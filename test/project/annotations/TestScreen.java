@@ -14,7 +14,7 @@ import project.apis.networkapi.Window;
 
 /**
  * Test for Screen-related functionality.
- * This test mocks the dependencies (Screen, AskUser, Window) and verifies the interactions.
+ * This test mocks the dependencies (Screen, AskUser, Window) 
  */
 public class TestScreen {
 
