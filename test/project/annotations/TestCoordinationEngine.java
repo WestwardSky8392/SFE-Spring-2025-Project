@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 /**
- * Tests the CoordinationEngine class.
+ * Tests the CoordinationEngine class
  */
 public class TestCoordinationEngine {
 
