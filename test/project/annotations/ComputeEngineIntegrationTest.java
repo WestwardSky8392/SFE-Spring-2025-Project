@@ -14,6 +14,8 @@ import project.annotations.InMemoryInputConfig;
 import project.annotations.OutputConfig;
 import project.annotations.InMemoryDataStore;
 
+//Integration tests for the Compute Engine
+
 public class ComputeEngineIntegrationTest {
 
     /**
