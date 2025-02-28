@@ -31,7 +31,4 @@ The compute engine will determine the **Digital Root Persistence** of a given in
 
 ## System Architecture
 The following diagram illustrates the high-level architecture of the system:
-
-<img src="https://github.com/WestwardSky8392/SFE-Spring-2025-Project/blob/main/apis.drawio.pdf" />
-
-
+![apis drawio_page-0001](https://github.com/user-attachments/assets/77c787d7-97df-418e-9420-9580181a34dc)
