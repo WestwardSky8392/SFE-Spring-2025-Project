@@ -2,6 +2,7 @@ package project.annotations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
 import project.apis.computeapi.Computation;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 /**
- * Tests the CoordinationEngine class.
+ * Tests the CoordinationEngine 
  */
 public class CoordinationEngineTest {
 
@@ -26,7 +27,7 @@ public class CoordinationEngineTest {
     @BeforeEach
     public void setUp() {
         dataStorage = Mockito.mock(DataStorageAPI.class);
-        computation = new Computation("testInput");
+        computation = Mockito.mock(Computation.class);
         engine = new CoordinationEngine(dataStorage, computation);
     }
 
@@ -37,9 +38,23 @@ public class CoordinationEngineTest {
     @Test
     public void testStartComputationWithValidData() {
         when(dataStorage.fetchData("inputKey")).thenReturn("12345");
+        when(computation.computeUserInput(12345)).thenReturn("6");
+        
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Computation completed successfully", result);
-        verify(dataStorage).storeData("outputKey", "6");
+        
+        // Capture the arguments passed to storeData
+        ArgumentCaptor<String> keyCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> valueCaptor = ArgumentCaptor.forClass(String.class);
+        verify(dataStorage).storeData(keyCaptor.capture(), valueCaptor.capture());
+        
+        // Print the actual arguments for debugging
+        System.out.println("Key: " + keyCaptor.getValue());
+        System.out.println("Value: " + valueCaptor.getValue());
+        
+        // Ensure the arguments match the expected values
+        assertEquals("outputKey", keyCaptor.getValue());
+        assertEquals("6", valueCaptor.getValue());
     }
 
     /**
