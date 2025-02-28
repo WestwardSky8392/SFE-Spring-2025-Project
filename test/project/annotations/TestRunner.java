@@ -1,4 +1,4 @@
-package test.project.annotations;
+package project.annotations;
 
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;

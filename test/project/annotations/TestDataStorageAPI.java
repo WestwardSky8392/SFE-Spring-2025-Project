@@ -1,4 +1,4 @@
-package test.project.annotations;
+package project.annotations;
 
 import project.apis.datastorage.DataStorageAPI;
 
