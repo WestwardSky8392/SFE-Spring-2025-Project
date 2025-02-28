@@ -70,7 +70,7 @@ public class TestImplementNetworkAPI {
     @Test
     void testSendValidInfo() {
         // Arrange
-        ValidInfo validInfo = new ValidInfo(mockAskUser);
+        ValidInfo validInfo = mock(ValidInfo.class); // Mock ValidInfo
         when(validInfo.sendToProcess()).thenReturn(mockSendInfo);
 
         // Act
@@ -78,5 +78,6 @@ public class TestImplementNetworkAPI {
 
         // Assert
         assertEquals(mockSendInfo, result, "sendToProcess should return the expected SendInfo instance.");
+        verify(validInfo).sendToProcess(); // Verify the method call
     }
 }
