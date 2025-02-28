@@ -42,19 +42,7 @@ public class CoordinationEngineTest {
         
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Computation completed successfully", result);
-        
-        // Capture the arguments passed to storeData
-        ArgumentCaptor<String> keyCaptor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<String> valueCaptor = ArgumentCaptor.forClass(String.class);
-        verify(dataStorage).storeData(keyCaptor.capture(), valueCaptor.capture());
-        
-        // Print the actual arguments for debugging
-        System.out.println("Key: " + keyCaptor.getValue());
-        System.out.println("Value: " + valueCaptor.getValue());
-        
-        // Ensure the arguments match the expected values
-        assertEquals("outputKey", keyCaptor.getValue());
-        assertEquals("6", valueCaptor.getValue());
+        verify(dataStorage).storeData("outputKey", "6");
     }
 
     /**
