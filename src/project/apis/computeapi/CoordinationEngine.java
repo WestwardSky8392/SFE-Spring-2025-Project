@@ -17,6 +17,10 @@ public class CoordinationEngine {
      * @param computation The computation component.
      */
     public CoordinationEngine(DataStorageAPI dataStorage, Computation computation) {
+        // Validate constructor parameters
+        if (dataStorage == null || computation == null) {
+            throw new IllegalArgumentException("DataStorage and Computation cannot be null");
+        }
         this.dataStorage = dataStorage;
         this.computation = computation;
     }
@@ -30,6 +34,14 @@ public class CoordinationEngine {
      * @return 
      */
     public String startComputation(String inputKey, String outputKey) {
+        // Validate input parameters
+        if (inputKey == null || inputKey.isEmpty()) {
+            throw new IllegalArgumentException("Input key cannot be null or empty");
+        }
+        if (outputKey == null || outputKey.isEmpty()) {
+            throw new IllegalArgumentException("Output key cannot be null or empty");
+        }
+
         // Fetch data from storage
         String inputData = dataStorage.fetchData(inputKey);
         if (inputData == null) {
