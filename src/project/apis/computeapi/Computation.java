@@ -4,7 +4,7 @@ public class Computation {
     String userInput;
 
     public Computation(String userInput){
-        userInput = this.userInput;
+        this.userInput = userInput; // Fix the constructor bug
     }
 
     public String getUserInput(){
@@ -12,11 +12,17 @@ public class Computation {
     }
 
     public void setUserInput(String newInput){
+        // No validation needed; all String values (including null/empty) are allowed
         userInput = newInput;
     }
      
-    //Compute Logic (Digital Root Persistence)
+    // Compute Logic (Digital Root Persistence)
     public String computeUserInput(int number){
+        // Validate input parameter
+        if (number < 0) {
+            throw new IllegalArgumentException("Number cannot be negative");
+        }
+
         String numberConvert = String.valueOf(number);
         int total = 0;
         int count = 0;

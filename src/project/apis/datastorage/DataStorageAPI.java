@@ -14,7 +14,14 @@ public interface DataStorageAPI {
      * @param key The unique identifier for the data.
      * @return The stored value, or {@code null} if not found.
      */
-    String fetchData(String key);
+    default String fetchData(String key) {
+        // Validate input parameter
+        if (key == null || key.isEmpty()) {
+            throw new IllegalArgumentException("Key cannot be null or empty");
+        }
+        // Implementation to fetch data
+        return null; 
+    }
 
     /**
      * Stores or updates a key-value pair in the data storage.
@@ -22,5 +29,14 @@ public interface DataStorageAPI {
      * @param key   The data key.
      * @param value The value to store.
      */
-    void storeData(String key, String value);
+    default void storeData(String key, String value) {
+        // Validate input parameters
+        if (key == null || key.isEmpty()) {
+            throw new IllegalArgumentException("Key cannot be null or empty");
+        }
+        if (value == null || value.isEmpty()) {
+            throw new IllegalArgumentException("Value cannot be null or empty");
+        }
+        // Implementation to store data
+    }
 }
