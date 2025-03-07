@@ -7,8 +7,8 @@ import project.apis.datastorage.DataStorageAPI;
  * It handles receiving requests, fetching data, performing computations, and storing results.
  */
 public class CoordinationEngine {
-    private DataStorageAPI dataStorage;
-    private Computation computation;
+    private final DataStorageAPI dataStorage;
+    private final Computation computation;
 
     /**
      * Talks with the specified data storage and computation components.
@@ -17,7 +17,6 @@ public class CoordinationEngine {
      * @param computation The computation component.
      */
     public CoordinationEngine(DataStorageAPI dataStorage, Computation computation) {
-        // Validate constructor parameters
         if (dataStorage == null || computation == null) {
             throw new IllegalArgumentException("DataStorage and Computation cannot be null");
         }
@@ -31,10 +30,9 @@ public class CoordinationEngine {
      *
      * @param inputKey  The key to fetch the input data.
      * @param outputKey The key to store the computation result.
-     * @return 
+     * @return A string message indicating the result of the computation.
      */
     public String startComputation(String inputKey, String outputKey) {
-        // Validate input parameters
         if (inputKey == null || inputKey.isEmpty()) {
             throw new IllegalArgumentException("Input key cannot be null or empty");
         }
@@ -42,25 +40,36 @@ public class CoordinationEngine {
             throw new IllegalArgumentException("Output key cannot be null or empty");
         }
 
-        // Fetch data from storage
-        String inputData = dataStorage.fetchData(inputKey);
+        int[] inputData;
+        try {
+            inputData = dataStorage.readData(inputKey);
+        } catch (Exception e) {
+            // In a real application, you might log this exception.
+            return "Input data not found";
+        }
+
         if (inputData == null) {
             return "Input data not found";
         }
 
-        // Convert input data to integer
+        String inputDataStr = new String(inputData, 0, inputData.length);
+
         int number;
         try {
-            number = Integer.parseInt(inputData);
+            number = Integer.parseInt(inputDataStr);
         } catch (NumberFormatException e) {
             return "Invalid input data format";
         }
 
-        // Perform computation and returns result back to Computation.java
+        // Compute the result using the provided computation component.
         String result = computation.computeUserInput(number);
 
-        // Store result in storage
-        dataStorage.storeData(outputKey, result);
+        try {
+            dataStorage.writeData(outputKey, result.chars().toArray());
+        } catch (Exception e) {
+            // In a real application, you might log this exception.
+            return "Error storing result";
+        }
 
         return "Computation completed successfully";
     }

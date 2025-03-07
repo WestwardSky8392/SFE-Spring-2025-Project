@@ -1,7 +1,6 @@
 package project.annotations;
 
 import project.apis.datastorage.DataStorageAPI;
-
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import project.annotations.ProcessAPI; // Ensure annotation exists and is correctly imported
 
 /**
  * Smoke test for DataStorageAPI 
@@ -28,41 +26,43 @@ class TestDataStorageAPI {
     }
 
     /**
-     * Tests the fetchData method.
+     * Tests the readData method.
      * Verifies that it returns the expected value when given a key.
      */
     @Test
-    void testFetchData() {
+    void testReadData() throws Exception {
         // Arrange
         String key = "testKey";
-        String expectedValue = "testValue";
-        when(dataStorageAPI.fetchData(key)).thenReturn(expectedValue);
+        int[] expectedValue = "12345".chars().toArray();  // Converts "12345" into an int[] of its code points.
+        when(dataStorageAPI.readData(key)).thenReturn(expectedValue);
 
         // Act
-        String result = dataStorageAPI.fetchData(key);
+        int[] result = dataStorageAPI.readData(key);
 
-        // Assert
-        assertEquals(expectedValue, result, "fetchData should return the expected value.");
-        verify(dataStorageAPI, times(1)).fetchData(key);
+        // Assert: Convert both int arrays into Strings for an easy comparison.
+        String expectedString = new String(expectedValue, 0, expectedValue.length);
+        String resultString = new String(result, 0, result.length);
+        assertEquals(expectedString, resultString);
+        verify(dataStorageAPI, times(1)).readData(key);
     }
 
     /**
-     * Tests the storeData method.
+     * Tests the writeData method.
      * Verifies that it is called once with the correct parameters.
      */
     @Test
-    void testStoreData() {
+    void testWriteData() throws Exception {
         // Arrange
         String key = "testKey";
-        String value = "testValue";
+        int[] value = "12345".chars().toArray();
 
         // Act
-        dataStorageAPI.storeData(key, value);
+        dataStorageAPI.writeData(key, value);
 
-        // Assert
-        verify(dataStorageAPI, times(1)).storeData(key, value);
+        // Assert: For void methods, verify that the method was invoked with the expected arguments.
+        verify(dataStorageAPI, times(1)).writeData(key, value);
 
-        // Confirm no unexpected interactions
+        // Confirm no unexpected interactions.
         verifyNoMoreInteractions(dataStorageAPI);
     }
 }

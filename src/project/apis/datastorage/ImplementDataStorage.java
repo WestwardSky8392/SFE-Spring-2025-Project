@@ -43,8 +43,13 @@ public class ImplementDataStorage implements StorageComputeAPI {
         if (dataStorageAPI == null) {
             return ""; // Return empty string if dataStorageAPI is not initialized
         }
-        String data = dataStorageAPI.fetchData(source);
-        return data != null ? data : ""; // Return empty string if data is null
+        try {
+            int[] data = dataStorageAPI.readData(source);
+            return new String(data, 0, data.length);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     /**
@@ -56,7 +61,11 @@ public class ImplementDataStorage implements StorageComputeAPI {
     @ProcessAPIPrototype
     public void writeData(String destination, String data) {
         if (dataStorageAPI != null) {
-            dataStorageAPI.storeData(destination, data);
+            try {
+                dataStorageAPI.writeData(destination, data.chars().toArray());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

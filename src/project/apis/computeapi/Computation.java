@@ -36,4 +36,10 @@ public class Computation {
         }
         return String.valueOf(count);
     }
+
+    // Add processData method
+    public int[] processData(int[] inputData) {
+        // Default implementation (can be overridden)
+        return inputData;
+    }
 }

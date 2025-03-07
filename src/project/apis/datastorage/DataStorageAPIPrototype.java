@@ -18,8 +18,10 @@ public class DataStorageAPIPrototype implements DataStorageAPI {
     */
     @Override
     @ProcessAPIPrototype
-    public String fetchData(String key) {
-        return storageComputeAPI.readData(key);
+    public int[] readData(String location) throws Exception {
+        String data = storageComputeAPI.readData(location);
+        // Convert the data to int[] as per the new interface
+        return data.chars().toArray();
     }
 
     /*
@@ -27,7 +29,9 @@ public class DataStorageAPIPrototype implements DataStorageAPI {
     */
     @Override
     @ProcessAPIPrototype
-    public void storeData(String key, String value) {
-        storageComputeAPI.writeData(key, value);
+    public void writeData(String location, int[] result) throws Exception {
+        // Convert int[] to String for storage
+        String data = new String(result, 0, result.length);
+        storageComputeAPI.writeData(location, data);
     }
 }

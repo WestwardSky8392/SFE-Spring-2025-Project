@@ -12,9 +12,6 @@ import project.apis.datastorage.DataStorageAPI;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-/**
- * Tests the CoordinationEngine 
- */
 public class TestCoordinationEngine {
 
     private DataStorageAPI dataStorage;
@@ -36,25 +33,28 @@ public class TestCoordinationEngine {
      * Verifies that the computation completes successfully and the result is stored correctly.
      */
     @Test
-    public void testStartComputationWithValidData() {
-        when(dataStorage.fetchData("inputKey")).thenReturn("12345");
+    public void testStartComputationWithValidData() throws Exception {
+        // Stub readData to return int[] corresponding to "12345"
+        when(dataStorage.readData("inputKey")).thenReturn("12345".chars().toArray());
+        // Stub computation to return "6" when passed 12345 as integer
         when(computation.computeUserInput(12345)).thenReturn("6");
         
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Computation completed successfully", result);
         
-        // Capture the arguments passed to storeData
+        // Capture the arguments passed to writeData
         ArgumentCaptor<String> keyCaptor = ArgumentCaptor.forClass(String.class);
-        ArgumentCaptor<String> valueCaptor = ArgumentCaptor.forClass(String.class);
-        verify(dataStorage).storeData(keyCaptor.capture(), valueCaptor.capture());
+        ArgumentCaptor<int[]> valueCaptor = ArgumentCaptor.forClass(int[].class);
+        verify(dataStorage).writeData(keyCaptor.capture(), valueCaptor.capture());
         
-        // Print the actual arguments for debugging
+        // For debugging: print captured values
         System.out.println("Key: " + keyCaptor.getValue());
-        System.out.println("Value: " + valueCaptor.getValue());
+        String capturedValue = new String(valueCaptor.getValue(), 0, valueCaptor.getValue().length);
+        System.out.println("Value: " + capturedValue);
         
-        // Ensure the arguments match the expected values
+        // Ensure the captured arguments match the expected values
         assertEquals("outputKey", keyCaptor.getValue());
-        assertEquals("6", valueCaptor.getValue());
+        assertEquals("6", capturedValue);
     }
 
     /**
@@ -62,8 +62,10 @@ public class TestCoordinationEngine {
      * Verifies that the method handles invalid input data format correctly.
      */
     @Test
-    public void testStartComputationWithInvalidData() {
-        when(dataStorage.fetchData("inputKey")).thenReturn("invalid");
+    public void testStartComputationWithInvalidData() throws Exception {
+        // Stub readData to return int[] corresponding to "invalid"
+        when(dataStorage.readData("inputKey")).thenReturn("invalid".chars().toArray());
+        
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Invalid input data format", result);
     }
@@ -73,8 +75,10 @@ public class TestCoordinationEngine {
      * Verifies that the method handles missing input data correctly.
      */
     @Test
-    public void testStartComputationWithMissingData() {
-        when(dataStorage.fetchData("inputKey")).thenReturn(null);
+    public void testStartComputationWithMissingData() throws Exception {
+        // Stub readData to return null
+        when(dataStorage.readData("inputKey")).thenReturn(null);
+        
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Input data not found", result);
     }

@@ -1,11 +1,15 @@
 package project.apis.computeapi;
-public class coordination{
-    private DataStorage dataStorage;
-    private Compute compute;
 
+// Import necessary classes
+import project.apis.datastorage.SimpleDataStorage;
+import project.apis.computeapi.SimpleCompute;
+
+public class Coordination {
+    private SimpleDataStorage dataStorage;
+    private SimpleCompute compute;
 
     // Constructor to initialize the components
-    public CoordinationComponent(DataStorage dataStorage, Compute compute) {
+    public Coordination(SimpleDataStorage dataStorage, SimpleCompute compute) {
         this.dataStorage = dataStorage;
         this.compute = compute;
     }
@@ -22,12 +26,12 @@ public class coordination{
             // Step 3: Write the results back to the data storage
             dataStorage.writeData(outputLocation, results);
             
-           //handles some errors
+            // Return success message
             return "Computation completed successfully!";
         } catch (Exception e) {
-           
+            // Handle all exceptions
             e.printStackTrace();
-            return "An error occurred during the computation.";
+            return "An error occurred: " + e.getMessage();
         }
     }
 }
