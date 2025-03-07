@@ -1,3 +1,4 @@
+// filepath: /workspaces/SFE-Spring-2025-Project/test/project/annotations/TestImplementNetworkAPI.java
 package project.annotations;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -5,7 +6,6 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -41,7 +41,7 @@ public class TestImplementNetworkAPI {
     private Window mockWindow;
 
     @Mock
-    private String mockTestingForErrorsProcess;
+    private TestingForErrorsProcess mockTestingForErrorsProcess;
 
     /**
      * Sets up test dependencies before each test.
@@ -93,12 +93,11 @@ public class TestImplementNetworkAPI {
     @Test
     void testTestingForErrorsProcess() throws Exception {
         // Arrange
-        TestingForErrorsProcess testingForErrorsProcess = mock(TestingForErrorsProcess.class);
-        when(testingForErrorsProcess.testingForErrorsProcess()).thenReturn(mockTestingForErrorsProcess);
+        when(mockTestingForErrorsProcess.testingForErrorsProcess()).thenReturn("expectedString");
         // Act
-        String result = testingForErrorsProcess.testingForErrorsProcess();
+        String result = mockTestingForErrorsProcess.testingForErrorsProcess();
         // Assert
-        assertEquals(mockTestingForErrorsProcess, result, "testingForErrorsProcess should return the expected string.");
-        verify(testingForErrorsProcess).testingForErrorsProcess();
+        assertEquals("expectedString", result, "testingForErrorsProcess should return the expected string.");
+        verify(mockTestingForErrorsProcess).testingForErrorsProcess();
     }
 }
