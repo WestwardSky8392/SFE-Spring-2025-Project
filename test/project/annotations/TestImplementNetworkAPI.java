@@ -11,6 +11,7 @@ import org.mockito.MockitoAnnotations;
 import project.apis.networkapi.AskUser;
 import project.apis.networkapi.Screen;
 import project.apis.networkapi.SendInfo;
+import project.apis.networkapi.TestingForErrorsProcess;
 import project.apis.networkapi.ValidInfo;
 import project.apis.networkapi.Window;
 import project.apis.networkapi.ImplementNetworkAPI; // Ensure this import exists
@@ -32,9 +33,16 @@ public class TestImplementNetworkAPI {
     
     @Mock
     private SendInfo mockSendInfo;
+
+    @Mock
+    private SendInfo mockInput;
     
     @Mock
     private Window mockWindow;
+
+    @Mock
+    private String mocktestingForErrorsProcess;
+
 
     /**
      * Sets up test dependencies before each test.
@@ -79,5 +87,16 @@ public class TestImplementNetworkAPI {
         // Assert
         assertEquals(mockSendInfo, result, "sendToProcess should return the expected SendInfo instance.");
         verify(validInfo).sendToProcess(); // Verify the method call
+    }
+    @Test
+    void testTestingForErrorsProcess(){
+        TestingForErrorsProcess testingForErrorsProcess = mock(TestingForErrorsProcess.class); // Mock ValidInfo
+        when(testingForErrorsProcess.testingForErrorsProcess()).thenReturn(mocktestingForErrorsProcess);
+        // Act
+        String result = testingForErrorsProcess.testingForErrorsProcess();
+
+        // Assert
+        assertEquals(mockSendInfo, result, "sendToProcess() should return the expected SendInfo instance. Unless there is error with input");
+        verify(testingForErrorsProcess).testingForErrorsProcess(); // Verify the method call
     }
 }

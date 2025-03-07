@@ -49,4 +49,19 @@ public class ImplementDigitalRootPersistenceAPI implements DigitalRootPersistenc
         
         return String.valueOf(digitalRoot);
     }
+    /**
+     * Exception handling to prevent uncaught exceptions from reaching
+     * computation boundary. There is a place holder 0 but this will 
+     * eventually the users input to see of there are any errors. 
+     * The case will be if the user doesn't enter an integer as the 
+     * input, failure testing will be printed out in terminal.
+     */
+    public void testingForErrorsProcess(){
+        try{
+            processDigitalRootPersistence(0);
+            System.out.println("Successfully Processed!");
+        }catch(Exception e){
+            System.out.println("Failure Processing!");
+        }
+    }
 }
