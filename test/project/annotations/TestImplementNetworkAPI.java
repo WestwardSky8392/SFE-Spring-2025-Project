@@ -40,8 +40,8 @@ public class TestImplementNetworkAPI {
     @Mock
     private Window mockWindow;
 
-    @Mock
-    private String mockTestingForErrorsProcess;
+    // Use a literal instead of a mock for a final class like String.
+    private final String mockTestingForErrorsProcess = "errorTest";
 
     /**
      * Sets up test dependencies before each test.
@@ -63,8 +63,10 @@ public class TestImplementNetworkAPI {
     void testShowWindow() throws Exception {
         // Arrange
         when(mockScreen.showWindow(mockAskUser)).thenReturn(mockWindow);
+        
         // Act
         Window result = networkAPI.showWindow(mockAskUser);
+        
         // Assert
         assertEquals(mockWindow, result, "showWindow should return the expected Window instance.");
         verify(mockScreen).showWindow(mockAskUser);
@@ -79,8 +81,10 @@ public class TestImplementNetworkAPI {
         // Arrange
         ValidInfo validInfo = mock(ValidInfo.class); // Create a mock ValidInfo
         when(validInfo.sendToProcess()).thenReturn(mockSendInfo);
+        
         // Act
         SendInfo result = validInfo.sendToProcess();
+        
         // Assert
         assertEquals(mockSendInfo, result, "sendToProcess should return the expected SendInfo instance.");
         verify(validInfo).sendToProcess();
@@ -95,8 +99,10 @@ public class TestImplementNetworkAPI {
         // Arrange
         TestingForErrorsProcess testingForErrorsProcess = mock(TestingForErrorsProcess.class);
         when(testingForErrorsProcess.testingForErrorsProcess()).thenReturn(mockTestingForErrorsProcess);
+        
         // Act
         String result = testingForErrorsProcess.testingForErrorsProcess();
+        
         // Assert
         assertEquals(mockTestingForErrorsProcess, result, "testingForErrorsProcess should return the expected string.");
         verify(testingForErrorsProcess).testingForErrorsProcess();
