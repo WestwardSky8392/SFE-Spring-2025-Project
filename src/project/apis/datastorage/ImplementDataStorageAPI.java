@@ -31,8 +31,9 @@ public class ImplementDataStorageAPI implements DataStorageAPI {
      */
     @Override
     @ProcessAPIPrototype
-    public String fetchData(String key) {
-        return dataStore.get(key);
+    public int[] readData(String location) {
+        String data = dataStore.get(location);
+        return data != null ? data.chars().toArray() : new int[0];
     }
     
     /**
@@ -43,7 +44,8 @@ public class ImplementDataStorageAPI implements DataStorageAPI {
      */
     @Override
     @ProcessAPIPrototype
-    public void storeData(String key, String value) {
-        dataStore.put(key, value);
+    public void writeData(String location, int[] result) {
+        String data = new String(result, 0, result.length);
+        dataStore.put(location, data);
     }
 }

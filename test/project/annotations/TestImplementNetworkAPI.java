@@ -5,6 +5,7 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -14,7 +15,8 @@ import project.apis.networkapi.SendInfo;
 import project.apis.networkapi.TestingForErrorsProcess;
 import project.apis.networkapi.ValidInfo;
 import project.apis.networkapi.Window;
-import project.apis.networkapi.ImplementNetworkAPI; // Ensure this import exists
+import project.apis.networkapi.ImplementNetworkAPI;
+import project.apis.datastorage.DataStorageAPI;
 
 /**
  * Smoke test for ImplementNetworkAPI.
@@ -24,6 +26,7 @@ import project.apis.networkapi.ImplementNetworkAPI; // Ensure this import exists
 public class TestImplementNetworkAPI {
 
     private ImplementNetworkAPI networkAPI;
+    private DataStorageAPI dataStorageAPI;
 
     @Mock
     private Screen mockScreen;
@@ -33,16 +36,12 @@ public class TestImplementNetworkAPI {
     
     @Mock
     private SendInfo mockSendInfo;
-
-    @Mock
-    private SendInfo mockInput;
     
     @Mock
     private Window mockWindow;
 
     @Mock
-    private String mocktestingForErrorsProcess;
-
+    private String mockTestingForErrorsProcess;
 
     /**
      * Sets up test dependencies before each test.
@@ -51,7 +50,9 @@ public class TestImplementNetworkAPI {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        networkAPI = new ImplementNetworkAPI(mockScreen);  // Make sure ImplementNetworkAPI exists
+        // DataStorageAPI is not used in the current implementation, so we mock it separately.
+        dataStorageAPI = mock(DataStorageAPI.class);
+        networkAPI = new ImplementNetworkAPI(mockScreen);
     }
 
     /**
@@ -59,44 +60,45 @@ public class TestImplementNetworkAPI {
      * the Screen interface and returns the expected Window instance.
      */
     @Test
-    void testShowWindow() {
+    void testShowWindow() throws Exception {
         // Arrange
         when(mockScreen.showWindow(mockAskUser)).thenReturn(mockWindow);
-
         // Act
         Window result = networkAPI.showWindow(mockAskUser);
-
         // Assert
         assertEquals(mockWindow, result, "showWindow should return the expected Window instance.");
         verify(mockScreen).showWindow(mockAskUser);
     }
 
     /**
-     * Tests the sendToProcess() method to verify that ValidInfo correctly
-     * processes and returns the expected SendInfo instance.
+     * Tests the sendToProcess() method for ValidInfo.
+     * Verifies that ValidInfo returns the expected SendInfo instance.
      */
     @Test
-    void testSendValidInfo() {
+    void testSendValidInfo() throws Exception {
         // Arrange
-        ValidInfo validInfo = mock(ValidInfo.class); // Mock ValidInfo
+        ValidInfo validInfo = mock(ValidInfo.class); // Create a mock ValidInfo
         when(validInfo.sendToProcess()).thenReturn(mockSendInfo);
-
         // Act
         SendInfo result = validInfo.sendToProcess();
-
         // Assert
         assertEquals(mockSendInfo, result, "sendToProcess should return the expected SendInfo instance.");
-        verify(validInfo).sendToProcess(); // Verify the method call
+        verify(validInfo).sendToProcess();
     }
+
+    /**
+     * Tests the testingForErrorsProcess() method.
+     * Verifies that it returns the expected string.
+     */
     @Test
-    void testTestingForErrorsProcess(){
-        TestingForErrorsProcess testingForErrorsProcess = mock(TestingForErrorsProcess.class); // Mock ValidInfo
-        when(testingForErrorsProcess.testingForErrorsProcess()).thenReturn(mocktestingForErrorsProcess);
+    void testTestingForErrorsProcess() throws Exception {
+        // Arrange
+        TestingForErrorsProcess testingForErrorsProcess = mock(TestingForErrorsProcess.class);
+        when(testingForErrorsProcess.testingForErrorsProcess()).thenReturn(mockTestingForErrorsProcess);
         // Act
         String result = testingForErrorsProcess.testingForErrorsProcess();
-
         // Assert
-        assertEquals(mockSendInfo, result, "sendToProcess() should return the expected SendInfo instance. Unless there is error with input");
-        verify(testingForErrorsProcess).testingForErrorsProcess(); // Verify the method call
+        assertEquals(mockTestingForErrorsProcess, result, "testingForErrorsProcess should return the expected string.");
+        verify(testingForErrorsProcess).testingForErrorsProcess();
     }
 }

@@ -10,7 +10,6 @@ import project.apis.datastorage.ImplementDataStorageAPI;
 public class Main {
     public static void main(String[] args) {
         testDigitalRootPersistenceAPI();
-        testDataStorageAPI();
         testStorageComputeAPI();
     
     }
@@ -34,30 +33,7 @@ public class Main {
         System.out.println();
     }
     
-    /**
-     * Tests the DataStorageAPI implementation.
-     */
-    private static void testDataStorageAPI() {
-        // Test DataStorageAPI
-        ImplementDataStorageAPI api = new ImplementDataStorageAPI();
-        
-        System.out.println("Testing DataStorageAPI:");
-        
-        // Test fetchData
-        String key = "testKey";
-        String value = api.fetchData(key);
-        System.out.println("fetchData(\"" + key + "\") = " + value);
-        
-        // Test storeData
-        key = "newKey";
-        value = "newValue";
-        api.storeData(key, value);
-        String retrievedValue = api.fetchData(key);
-        System.out.println("storeData(\"" + key + "\", \"" + value + "\")");
-        System.out.println("fetchData(\"" + key + "\") = " + retrievedValue);
-        System.out.println();
-    }
-    
+
     /**
      * Tests the StorageComputeAPI implementation.
      */

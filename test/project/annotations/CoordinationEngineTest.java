@@ -2,7 +2,6 @@ package project.annotations;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
 import project.apis.computeapi.Computation;
@@ -36,13 +35,13 @@ public class CoordinationEngineTest {
      * Verifies that the computation completes successfully and the result is stored correctly.
      */
     @Test
-    public void testStartComputationWithValidData() {
-        when(dataStorage.fetchData("inputKey")).thenReturn("12345");
+    public void testStartComputationWithValidData() throws Exception {
+        when(dataStorage.readData("inputKey")).thenReturn("12345".chars().toArray());
         when(computation.computeUserInput(12345)).thenReturn("6");
         
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Computation completed successfully", result);
-        verify(dataStorage).storeData("outputKey", "6");
+        verify(dataStorage).writeData("outputKey", "6".chars().toArray());
     }
 
     /**
@@ -50,8 +49,8 @@ public class CoordinationEngineTest {
      * Verifies that the method handles invalid input data format correctly.
      */
     @Test
-    public void testStartComputationWithInvalidData() {
-        when(dataStorage.fetchData("inputKey")).thenReturn("invalid");
+    public void testStartComputationWithInvalidData() throws Exception {
+        when(dataStorage.readData("inputKey")).thenReturn("invalid".chars().toArray());
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Invalid input data format", result);
     }
@@ -61,8 +60,8 @@ public class CoordinationEngineTest {
      * Verifies that the method handles missing input data correctly.
      */
     @Test
-    public void testStartComputationWithMissingData() {
-        when(dataStorage.fetchData("inputKey")).thenReturn(null);
+    public void testStartComputationWithMissingData() throws Exception {
+        when(dataStorage.readData("inputKey")).thenReturn(null);
         String result = engine.startComputation("inputKey", "outputKey");
         assertEquals("Input data not found", result);
     }
