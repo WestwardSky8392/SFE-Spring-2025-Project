@@ -1,16 +1,20 @@
 package project.apis.computeapi;
 
-// Import necessary classes
-import project.apis.computeapi.Computation;
-
 public class SimpleCompute extends Computation {
-    public SimpleCompute(String userInput) {
-        super(userInput);
+
+    public SimpleCompute() {
+        // No arguments needed since the parent class has no constructor with arguments
+    }
+
+    @Override
+    public String computeUserInput(int input) {
+        // Example computation: multiply the input by 2 and return as a string
+        return String.valueOf(input * 2);
     }
 
     @Override
     public int[] processData(int[] inputData) {
-        // A simple computation: multiply each element by 2
+        // Example computation: multiply each element by 2
         int[] results = new int[inputData.length];
         for (int i = 0; i < inputData.length; i++) {
             results[i] = inputData[i] * 2;

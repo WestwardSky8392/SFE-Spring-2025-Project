@@ -5,7 +5,7 @@ import project.apis.datastorage.DataStorageAPI;
 public class CoordinationComponent {
 
     private final DataStorageAPI dataStorage;
-    private SimpleCompute compute;
+    private final SimpleCompute compute;
 
     public CoordinationComponent(DataStorageAPI dataStorage, SimpleCompute compute) {
         this.dataStorage = dataStorage;
