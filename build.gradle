@@ -45,6 +45,9 @@ dependencies {
     
     // JUnit Jupiter Params
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.1'
+    
+    // JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
 }
 
 test {
