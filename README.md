@@ -32,3 +32,7 @@ The compute engine will determine the **Digital Root Persistence** of a given in
 ## System Architecture
 The following diagram illustrates the high-level architecture of the system:
 ![apis drawio_page-0001](https://github.com/user-attachments/assets/77c787d7-97df-418e-9420-9580181a34dc)
+
+## Multi-Threaded NetworkAPI Implementation
+We use 12 threads because it’s a good balance between speed and not overloading the system. 
+If needed, this number can be adjusted based on performance.
