@@ -15,7 +15,7 @@ java {
 sourceSets {
     main {
         java {
-            srcDir 'src'
+            srcDirs = ['src'] // Ensure that production sources are in the src folder
         }
         resources {
             srcDir 'src'
@@ -23,7 +23,7 @@ sourceSets {
     }
     test {
         java {
-            srcDir 'test'
+            srcDirs = ['test'] // Test sources are in the test folder
         }
         resources {
             srcDir 'test'
