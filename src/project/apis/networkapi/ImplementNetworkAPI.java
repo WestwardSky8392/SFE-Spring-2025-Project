@@ -5,9 +5,15 @@ import project.apis.networkapi.AskUser;
 import project.apis.networkapi.Window;
 import project.apis.networkapi.SendInfo;
 import project.apis.networkapi.ValidInfo;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
 
 import java.io.File;
 import java.util.List;
+
+
 
 /**
  * Prototype implementation of the NetworkAPI.
@@ -16,6 +22,9 @@ import java.util.List;
 public class ImplementNetworkAPI { 
 
     private final Screen screen;
+
+    private static final int THREAD_POOL_SIZE = 12;
+    private final ExecutorService executor;
 
     /**
      * Constructor accepting a Screen dependency.
@@ -70,5 +79,19 @@ public class ImplementNetworkAPI {
         AskUser askUser = new AskUser(); 
         SendInfo info = new ValidInfo(askUser); 
         return info;
+    }
+
+    public MultiThreadedNetworkAPI() {
+        this.executor = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+    }
+
+    // Method to execute API calls asynchronously
+    public Future<String> makeApiCall(Callable<String> apiTask) {
+        return executor.submit(apiTask);
+    }
+
+    // Shutdown method to clean up resources
+    public void shutdown() {
+        executor.shutdown();
     }
 }
