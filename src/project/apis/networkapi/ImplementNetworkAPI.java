@@ -9,6 +9,11 @@ import project.apis.networkapi.ValidInfo;
 import java.io.File;
 import java.util.List;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
+
 /**
  * Prototype implementation of the NetworkAPI.
  * This class uses a Screen dependency to handle UI interactions.
@@ -16,6 +21,8 @@ import java.util.List;
 public class ImplementNetworkAPI { 
 
     private final Screen screen;
+    private static final int THREAD_POOL_SIZE = 12;
+    private final ExecutorService executor = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
     /**
      * Constructor accepting a Screen dependency.
@@ -71,4 +78,12 @@ public class ImplementNetworkAPI {
         SendInfo info = new ValidInfo(askUser); 
         return info;
     }
+    public Future<String> makeApiCall(Callable<String> apiTask) {
+        return executor.submit(apiTask);
+    }
+
+    // Shutdown method to clean up resources
+    public void shutdown() {
+        executor.shutdown();
+    }  
 }
