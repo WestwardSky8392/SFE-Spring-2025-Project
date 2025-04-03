@@ -78,6 +78,7 @@ public class ImplementNetworkAPI {
         SendInfo info = new ValidInfo(askUser); 
         return info;
     }
+    
     public Future<String> makeApiCall(Callable<String> apiTask) {
         return executor.submit(apiTask);
     }
