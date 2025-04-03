@@ -1,10 +1,11 @@
-package edu.softwareeng.sample;
+package project.annotations;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -18,7 +19,7 @@ import project.apis.networkapi.Screen; // Import Screen
 import project.apis.networkapi.Window; // Import Window
 import project.apis.networkapi.AskUser; // Import AskUser
 
-public class TestMultiUser {
+public class TestMultiUser implements Runnable{
 
     // TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
     // interface
@@ -38,7 +39,6 @@ public class TestMultiUser {
             }
         });
     }
-
     @Test
     public void compareMultiAndSingleThreaded() throws Exception {
         int nThreads = 4;
@@ -88,5 +88,18 @@ public class TestMultiUser {
             result.addAll(Files.readAllLines(multiThreadedOut.toPath()));
         }
         return result;
+    }
+    //creates mulitimple thereads from ImplementNetworkAPI
+    @Override
+    public void run() {
+        try{
+            Callable<String> apiTask = () -> {
+                Thread.sleep(1000);
+                return "Task completed by " + Thread.currentThread().getName();
+            };
+            coordinator.makeApiCall(apiTask);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

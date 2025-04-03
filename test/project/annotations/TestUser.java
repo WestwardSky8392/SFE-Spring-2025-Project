@@ -1,11 +1,11 @@
-package edu.softwareeng.sample;
+package project.annotations;
 
 import java.io.File;
 import java.io.IOException;
 import project.apis.networkapi.AskUser; // Import AskUser
 import project.apis.networkapi.ImplementNetworkAPI; // Import ImplementNetworkAPI
 
-public class TestUser {
+public class TestUser implements Runnable{
 
     // TODO 3: change the type of this variable to the name you're using for your
     // @NetworkAPI interface; also update the parameter passed to the constructor
@@ -33,5 +33,11 @@ public class TestUser {
         //pass the actual paths and delimiter
         AskUser askUser = new AskUser(inputPath, outputPath, delimiter);
         coordinator.showWindow(askUser);
+    }
+
+    @Override
+    public void run() {
+        
+        throw new UnsupportedOperationException("Unimplemented method 'run'");
     }
 }
