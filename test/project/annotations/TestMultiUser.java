@@ -1,5 +1,9 @@
 package project.annotations;
 
+import project.apis.networkapi.MultiThreadedNetworkAPI; // Ensure this matches the correct package
+import project.apis.networkapi.Screen;
+import project.apis.networkapi.Window;
+import project.apis.networkapi.AskUser;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,36 +13,29 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-import org.junit.jupiter.api.Assertions; // Fixed import for JUnit 5 Assertions
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import project.apis.networkapi.ImplementNetworkAPI; // Import ImplementNetworkAPI
-import project.apis.networkapi.Screen; // Import Screen
-import project.apis.networkapi.Window; // Import Window
-import project.apis.networkapi.AskUser; // Import AskUser
-
-public class TestMultiUser implements Runnable{
+public class TestMultiUser implements Runnable {
 
     // TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
     // interface
-    private ImplementNetworkAPI coordinator;
+    private MultiThreadedNetworkAPI coordinator;
 
     @BeforeEach
     public void initializeComputeEngine() {
-        // TODO 2: create an instance of the implementation of your @NetworkAPI; this is the component
-        // that the user will make requests to
-        // Store it in the 'coordinator' instance variable
-        coordinator = new ImplementNetworkAPI(new Screen() {
+        // TODO 2: Initialize the compute engine with the appropriate implementation
+        coordinator = new MultiThreadedNetworkAPI(new Screen() {
             @Override
             public Window showWindow(AskUser askUser) {
                 return new Window() {
-                    // Minimal or no-op implementation
+                    //na for now
                 };
             }
         });
     }
+
     @Test
     public void compareMultiAndSingleThreaded() throws Exception {
         int nThreads = 4;
@@ -84,21 +81,21 @@ public class TestMultiUser implements Runnable{
     private List<String> loadAllOutput(String prefix, int nThreads) throws IOException {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < nThreads; i++) {
-            File multiThreadedOut = new File(prefix + i);
-            result.addAll(Files.readAllLines(multiThreadedOut.toPath()));
+            File file = new File(prefix + i);
+            result.addAll(Files.readAllLines(file.toPath()));
         }
         return result;
     }
-    //creates mulitimple thereads from ImplementNetworkAPI
+
     @Override
     public void run() {
-        try{
+        try {
             Callable<String> apiTask = () -> {
                 Thread.sleep(1000);
                 return "Task completed by " + Thread.currentThread().getName();
             };
             coordinator.makeApiCall(apiTask);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

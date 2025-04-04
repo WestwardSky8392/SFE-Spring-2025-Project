@@ -15,7 +15,7 @@ import project.apis.networkapi.SendInfo;
 import project.apis.networkapi.TestingForErrorsProcess;
 import project.apis.networkapi.ValidInfo;
 import project.apis.networkapi.Window;
-import project.apis.networkapi.ImplementNetworkAPI;
+import project.apis.networkapi.ImplementNetworkAPI; // now public in its own file
 import project.apis.datastorage.DataStorageAPI;
 
 /**
