@@ -18,8 +18,9 @@ public class MultiThreadedNetworkAPI extends BaseNetworkAPI {
     }
 
     @Override
-    public void showWindow(AskUser askUser) {
+    public Window showWindow(AskUser askUser) {
         System.out.println("MultiThreadedNetworkAPI: Showing window for AskUser with inputPath: " + askUser.getInputPath());
+        return screen.showWindow(askUser); // Delegate to the `screen` implementation
     }
 
     public void shutdown() {
