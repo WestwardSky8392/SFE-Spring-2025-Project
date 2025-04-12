@@ -16,7 +16,7 @@ java {
 sourceSets {
     main {
         proto {
-            srcDirs = ['src/main/proto'] 
+            srcDirs = ['src/main/proto']
         }
         java {
             srcDirs = [
