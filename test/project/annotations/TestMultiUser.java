@@ -1,6 +1,6 @@
 package project.annotations;
 
-import project.apis.networkapi.MultiThreadedNetworkAPI; // Ensure this matches the correct package
+import project.apis.networkapi.MultiThreadedNetworkAPI; 
 import project.apis.networkapi.Screen;
 import project.apis.networkapi.Window;
 import project.apis.networkapi.AskUser;
