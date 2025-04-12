@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package networkapi;
+
+service NetworkAPI {
+    rpc ShowWindow (AskUserRequest) returns (WindowResponse);
+    rpc MakeApiCall (ApiTaskRequest) returns (ApiTaskResponse);
+}
+
+message AskUserRequest {
+    required string inputPath = 1;
+    required string outputPath = 2;
+    optional string delimiter = 3;
+}
+
+message WindowResponse {
+    required string message = 1;
+}
+
+message ApiTaskRequest {
+    required string task = 1;
+}
+
+message ApiTaskResponse {
+    required string result = 1;
+}
