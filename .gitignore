@@ -11,3 +11,6 @@ bin
 *.class
 pre-commit
 untitled1/src/Main.java
+
+# Ignore Protobuf-generated files
+build/generated/
