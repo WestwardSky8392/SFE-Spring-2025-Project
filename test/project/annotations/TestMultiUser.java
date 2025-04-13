@@ -1,6 +1,6 @@
 package project.annotations;
 
-import project.apis.networkapi.MultiThreadedNetworkAPI; // Ensure this matches the correct package
+import project.apis.networkapi.MultiThreadedNetworkAPI;
 import project.apis.networkapi.Screen;
 import project.apis.networkapi.Window;
 import project.apis.networkapi.AskUser;
@@ -19,18 +19,15 @@ import org.junit.jupiter.api.Test;
 
 public class TestMultiUser implements Runnable {
 
-    // TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
-    // interface
     private MultiThreadedNetworkAPI coordinator;
 
     @BeforeEach
     public void initializeComputeEngine() {
-        // TODO 2: Initialize the compute engine with the appropriate implementation
         coordinator = new MultiThreadedNetworkAPI(new Screen() {
             @Override
             public Window showWindow(AskUser askUser) {
                 return new Window() {
-                    //na for now
+                    // Minimal or no-op implementation
                 };
             }
         });
