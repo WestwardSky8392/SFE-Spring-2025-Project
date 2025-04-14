@@ -7,6 +7,10 @@ import java.util.concurrent.Callable;
 public class ImplementNetworkAPI {
     private final Screen screen;
 
+    public ImplementNetworkAPI() {
+        this.screen = null;
+    }
+
     public ImplementNetworkAPI(Screen screen) {
         this.screen = screen;
     }
