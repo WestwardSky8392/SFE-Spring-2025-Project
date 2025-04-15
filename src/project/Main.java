@@ -29,29 +29,31 @@ public class Main {
         System.out.println("gRPC Server started on port 8080");
         server.start();
         server.awaitTermination();
-
         ImplementNetworkAPI networkAPI = new ImplementNetworkAPI();
         Scanner sc = new Scanner(System.in);
         System.out.println("Are you inputting data manually that involved a file? (y/n)");
         String choice = sc.nextLine();
-
-        if(choice.equals("y") || choice.equals("yes") || choice.equals("Yes")){
-            System.out.println("Enter file: ");
-            String fileName = sc.nextLine();
-            AskUser askUser = new AskUser(fileName, null, ',');
-            networkAPI.showWindow(askUser);
-            networkAPI.sendToProcess();
-        }else{
-            System.out.println("Enter input separated by the spaces:");
-            String numInput = sc.nextLine();
-            String[] numbers = numInput.split(",");
-            String numsArrString = "";
-            for(int i = 0; i<numbers.length; i++){
-                numsArrString += numbers[i];
+        try{
+            if(choice.equals("y") || choice.equals("yes") || choice.equals("Yes")){
+                System.out.println("Enter file: ");
+                String fileName = sc.nextLine();
+                AskUser askUser = new AskUser(fileName, fileName, ',');
+                networkAPI.showWindow(askUser);
+                networkAPI.sendToProcess();
+            }else{
+                System.out.println("Enter input separated by the spaces:");
+                String numInput = sc.nextLine();
+                String[] numbers = numInput.split(",");
+                String numsArrString = "";
+                for(int i = 0; i<numbers.length; i++){
+                    numsArrString += numbers[i];
+                }
+                AskUser askUser = new AskUser(numsArrString," ", ' ');
+                networkAPI.showWindow(askUser);
+                networkAPI.sendToProcess();
             }
-            AskUser askUser = new AskUser(numsArrString, null, ' ');
-            networkAPI.showWindow(askUser);
-            networkAPI.sendToProcess();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
     
@@ -74,7 +76,6 @@ public class Main {
         System.out.println();
     }
     
-
     /**
      * Tests the StorageComputeAPI implementation.
      */

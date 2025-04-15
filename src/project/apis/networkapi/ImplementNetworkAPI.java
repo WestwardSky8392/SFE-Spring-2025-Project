@@ -36,7 +36,7 @@ public class ImplementNetworkAPI {
     public SendInfo sendToProcess() {
         return new ValidInfo(new AskUser());
     }
-
+        
     public String makeApiCall(Callable<String> apiTask) throws Exception {
         return apiTask.call();
     }
