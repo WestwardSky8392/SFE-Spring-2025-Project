@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package datastorage;
+
+service DataStorageAPI {
+    rpc ReadData (ReadDataRequest) returns (ReadDataResponse);
+    rpc WriteData (WriteDataRequest) returns (WriteDataResponse);
+}
+
+message ReadDataRequest {
+    required string key = 1;
+}
+
+message ReadDataResponse {
+    required bytes data = 1;
+}
+
+message WriteDataRequest {
+    required string key = 1;
+    required bytes data = 2;
+}
+
+message WriteDataResponse {
+    required bool success = 1;
+}
