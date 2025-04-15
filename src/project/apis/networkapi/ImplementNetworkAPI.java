@@ -7,6 +7,10 @@ import java.util.concurrent.Callable;
 public class ImplementNetworkAPI {
     private final Screen screen;
 
+    public ImplementNetworkAPI() {
+        this.screen = null;
+    }
+
     public ImplementNetworkAPI(Screen screen) {
         this.screen = screen;
     }
@@ -32,7 +36,7 @@ public class ImplementNetworkAPI {
     public SendInfo sendToProcess() {
         return new ValidInfo(new AskUser());
     }
-
+        
     public String makeApiCall(Callable<String> apiTask) throws Exception {
         return apiTask.call();
     }
