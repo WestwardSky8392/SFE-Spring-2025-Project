@@ -97,5 +97,20 @@ test {
 }
 
 application {
-    mainClass = 'project.Main'
+    mainClass = 'project.Main' // Default main class
+}
+
+// Run task: for  DataStorageApiGrpcServer
+task runDataStoreServer(type: JavaExec) {
+    group = 'application'
+    description = 'Run the DataStorageApiGrpcServer'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'project.apis.datastorage.DataStorageApiGrpcServer'
+}
+
+// Print the full runtime classpath for manual java runs
+task printClasspath {
+    doLast {
+        println sourceSets.main.runtimeClasspath.asPath
+    }
 }

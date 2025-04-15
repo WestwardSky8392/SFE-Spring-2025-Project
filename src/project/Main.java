@@ -9,6 +9,8 @@ import project.apis.networkapi.ImplementNetworkAPI;
 import project.apis.networkapi.NetworkApiServiceImpl;
 import project.apis.networkapi.Screen;
 import project.apis.networkapi.ValidInfo;
+import project.apis.datastorage.DataStorageApiGrpcClient;
+import project.apis.datastorage.DataStorageAPI;
 
 import java.util.Scanner;
 
@@ -22,42 +24,55 @@ import io.grpc.ServerBuilder;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        //GRPC Server setup
+        // GRPC Server setup
         Server server = ServerBuilder.forPort(8080)
             .addService((BindableService) new NetworkApiServiceImpl())
             .build();
 
         System.out.println("gRPC Server started on port 8080");
         server.start();
-        server.awaitTermination();
-        ImplementNetworkAPI networkAPI = new ImplementNetworkAPI();
+
+        // Use gRPC-based DataStorageAPI implementation
+        DataStorageAPI dataStorage = new DataStorageApiGrpcClient("localhost", 9090);
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Are you inputting data manually that involved a file? (y/n)");
+        if (!sc.hasNextLine()) {
+            // Case handle: No input detected
+            System.out.println("No input detected. Please run this program in a terminal and provide input.");
+            System.exit(1);
+        }
         String choice = sc.nextLine();
         FileIOHandler f = new FileIOHandler();
-        try{
-            if(choice.equals("y") || choice.equals("yes") || choice.equals("Yes")){
+        try {
+            if (choice.equals("y") || choice.equals("yes") || choice.equals("Yes")) {
                 System.out.println("Enter file: ");
                 String fileName = sc.nextLine();
                 f.readFile(fileName);
-            }else{
+                System.out.println("File read and computation complete.");
+            } else {
                 System.out.println("Enter input separated by the spaces:");
                 String numInput = sc.nextLine();
                 String[] numbers = numInput.split(",");
                 String numsArrString = "";
-                for(int i = 0; i<numbers.length; i++){
+                for (int i = 0; i < numbers.length; i++) {
                     numsArrString += numbers[i];
                 }
-                AskUser askUser = new AskUser(numsArrString," ", ' ');
+                AskUser askUser = new AskUser(numsArrString, " ", ' ');
+                ImplementNetworkAPI networkAPI = new ImplementNetworkAPI();
                 networkAPI.showWindow(askUser);
                 networkAPI.sendToProcess();
+                System.out.println("Computation complete.");
             }
-        }catch (Exception e){
+            System.out.println("Task succeeded!");
+        } catch (Exception e) {
+            System.out.println("Task failed: " + e.getMessage());
             e.printStackTrace();
         }
+        server.awaitTermination();
     }
-    
-    /**
+
+    /** Test DigitalRootPersistenceAPI
      * Tests the DigitalRootPersistenceAPI implementation.
      */
     private static void testDigitalRootPersistenceAPI() {
@@ -76,7 +91,7 @@ public class Main {
         System.out.println();
     }
     
-    /**
+    /** Test StorageComputeAPI
      * Tests the StorageComputeAPI implementation.
      */
     private static void testStorageComputeAPI() {
@@ -89,8 +104,9 @@ public class Main {
         String destination = "testDest";
         String data = "Sample Data";
         api.writeData(destination, data);
-        String retrievedData = api.readData(destination);
         System.out.println("writeData(\"" + destination + "\", \"" + data + "\")");
+        
+        String retrievedData = api.readData(destination);
         System.out.println("readData(\"" + destination + "\") = " + retrievedData);
     }
 }

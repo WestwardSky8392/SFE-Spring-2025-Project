@@ -1,3 +1,5 @@
+package project.apis.networkapi;
+
 import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
