@@ -4,7 +4,7 @@ import project.apis.computeapi.ImplementDigitalRootPersistenceAPI;
 import project.apis.datastorage.ImplementDataStorage;
 import project.apis.datastorage.ImplementDataStorageAPI;
 import project.apis.networkapi.AskUser;
-import project.apis.networkapi.FileIOHandler;
+
 import project.apis.networkapi.ImplementNetworkAPI;
 import project.apis.networkapi.NetworkApiServiceImpl;
 import project.apis.networkapi.Screen;
@@ -34,12 +34,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Are you inputting data manually that involved a file? (y/n)");
         String choice = sc.nextLine();
-        FileIOHandler f = new FileIOHandler();
         try{
             if(choice.equals("y") || choice.equals("yes") || choice.equals("Yes")){
                 System.out.println("Enter file: ");
                 String fileName = sc.nextLine();
-                f.readFile(fileName);
+                AskUser askUser = new AskUser(fileName,"", ' ');
+                networkAPI.showWindow(askUser);
+                networkAPI.sendToProcess();
             }else{
                 System.out.println("Enter input separated by the spaces:");
                 String numInput = sc.nextLine();
