@@ -31,9 +31,13 @@ This approach required many object allocations and string manipulations, creatin
 ### Solution Implemented
 The optimized implementation (`FastDigitalRootPersistenceAPI`) addresses this bottleneck by:
 - Using pure arithmetic operations instead of string conversions
+Avoids the overhead of converting numbers to strings, making digit extraction faster.
 - Extracting digits directly using modulo and division operations
+Efficiently isolates digits without parsing, keeping the logic simple and fast.
 - Eliminating unnecessary object creation
+Reduces the number of temporary objects, saving memory and processing time.
 - Reducing memory allocation and garbage collection overhead
+Keeps operations in-place and lightweight, minimizing GC interruptions.
 
 ### Pull Requests
 - [PR #1: Add optimized FastDigitalRootPersistenceAPI and benchmark in Main](https://github.com/your-username/SFE-Spring-2025-Project/pull/1)
