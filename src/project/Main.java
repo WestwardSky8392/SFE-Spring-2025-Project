@@ -78,17 +78,37 @@ public class Main {
     private static void testDigitalRootPersistenceAPI() {
         // Test DigitalRootPersistenceAPI
         ImplementDigitalRootPersistenceAPI api = new ImplementDigitalRootPersistenceAPI();
-        
+        project.apis.computeapi.FastDigitalRootPersistenceAPI fastApi = new project.apis.computeapi.FastDigitalRootPersistenceAPI();
+
         // Test cases from the test class
         int[] testNumbers = {9875, 12345, 999, 0, 1, 77};
         String[] expectedResults = {"2", "6", "9", "0", "1", "5"};
-        
+
         System.out.println("Testing DigitalRootPersistenceAPI:");
         for (int i = 0; i < testNumbers.length; i++) {
             String result = api.processDigitalRootPersistence(testNumbers[i]);
             System.out.println("Input: " + testNumbers[i] + ", Expected: " + expectedResults[i] + ", Actual: " + result);
         }
         System.out.println();
+
+        // Benchmark original vs optimized
+        int largeNumber = 987654321;
+        int iterations = 1_000_000;
+        long start, end;
+
+        start = System.currentTimeMillis();
+        for (int i = 0; i < iterations; i++) {
+            api.processDigitalRootPersistence(largeNumber + i % 100);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("Original implementation: " + (end - start) + " ms for " + iterations + " iterations.");
+
+        start = System.currentTimeMillis();
+        for (int i = 0; i < iterations; i++) {
+            fastApi.processDigitalRootPersistence(largeNumber + i % 100);
+        }
+        end = System.currentTimeMillis();
+        System.out.println("Optimized implementation: " + (end - start) + " ms for " + iterations + " iterations.");
     }
     
     /** Test StorageComputeAPI
