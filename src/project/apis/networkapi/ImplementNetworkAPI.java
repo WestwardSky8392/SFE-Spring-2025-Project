@@ -1,6 +1,7 @@
 package project.apis.networkapi;
 
 import java.util.concurrent.Callable;
+import project.apis.computeapi.CoordinationEngine;
 
 public class ImplementNetworkAPI {
     private final Screen screen;
@@ -14,6 +15,11 @@ public class ImplementNetworkAPI {
     public ImplementNetworkAPI(CoordinationEngine coordinationEngine, Screen screen) {
         this.coordinationEngine = coordinationEngine;
         this.screen = screen;
+    }
+
+    public ImplementNetworkAPI(Screen screen) {
+        this.screen = screen;
+        this.coordinationEngine = null;
     }
 
     public Window showWindow(AskUser askUser) {

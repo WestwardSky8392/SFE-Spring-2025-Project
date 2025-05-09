@@ -1,6 +1,7 @@
 package project.apis.networkapi;
 
 import java.util.concurrent.Callable;
+import project.apis.computeapi.CoordinationEngine;
 
 public abstract class BaseNetworkAPI {
     protected final Screen screen;

@@ -6,13 +6,18 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import project.apis.computeapi.CoordinationEngine;
 
 public class MultiThreadedNetworkAPI extends BaseNetworkAPI {
     private static final int THREAD_POOL_SIZE = 12; 
     private final ExecutorService executor = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
+    public MultiThreadedNetworkAPI(Screen screen, CoordinationEngine coordinationEngine) {
+        super(screen, coordinationEngine);
+    }
+
     public MultiThreadedNetworkAPI(Screen screen) {
-        super(screen);
+        super(screen, null);
     }
 
     @Override

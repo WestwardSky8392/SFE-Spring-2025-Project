@@ -2,11 +2,11 @@ package project.apis.networkapi;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import networkapi.ApiTaskRequest;
-import networkapi.ApiTaskResponse;
-import networkapi.AskUserRequest;
 import networkapi.NetworkAPIGrpc;
-import networkapi.WindowResponse;
+import networkapi.Networkapi.AskUserRequest;
+import networkapi.Networkapi.WindowResponse;
+import networkapi.Networkapi.ApiTaskRequest;
+import networkapi.Networkapi.ApiTaskResponse;
 
 import java.util.concurrent.TimeUnit;
 
