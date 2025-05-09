@@ -1,36 +1,31 @@
 package project.apis.networkapi;
 
-import java.io.File;
-import java.util.List;
 import java.util.concurrent.Callable;
 
 public class ImplementNetworkAPI {
     private final Screen screen;
+    private final CoordinationEngine coordinationEngine;
 
     public ImplementNetworkAPI() {
         this.screen = null;
+        this.coordinationEngine = null;
     }
 
-    public ImplementNetworkAPI(Screen screen) {
+    public ImplementNetworkAPI(CoordinationEngine coordinationEngine, Screen screen) {
+        this.coordinationEngine = coordinationEngine;
         this.screen = screen;
     }
 
     public Window showWindow(AskUser askUser) {
-        readAndWrite(askUser);
+        // Use CoordinationEngine to process input and output
+        String inputKey = "input:" + askUser.getInputPath();
+        String outputKey = "output:" + askUser.getOutputPath();
+        coordinationEngine.startComputation(inputKey, outputKey);
         return screen.showWindow(askUser);
     }
 
     private void readAndWrite(AskUser user) {
-        try {
-            File inputFile = new File(user.getInputPath());
-            List<String> lines = java.nio.file.Files.readAllLines(inputFile.toPath());
-
-            File outputFile = new File(user.getOutputPath());
-            java.nio.file.Files.write(outputFile.toPath(), lines);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // Deprecated: now handled by CoordinationEngine
     }
 
     public SendInfo sendToProcess() {
