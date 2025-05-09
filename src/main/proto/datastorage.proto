@@ -1,4 +1,4 @@
-syntax = "proto3";  // Updated to proto3 for better compatibility
+syntax = "proto2";
 
 package datastorage;
 
@@ -8,20 +8,18 @@ service DataStorageAPI {
 }
 
 message ReadDataRequest {
-    string key = 1;  // Fields in proto3 are optional by default
+    required string key = 1;
 }
 
 message ReadDataResponse {
-    bytes data = 1;
-    string error_message = 2;  // Optional error message
+    required bytes data = 1;
 }
 
 message WriteDataRequest {
-    string key = 1;
-    bytes data = 2;
+    required string key = 1;
+    required bytes data = 2;
 }
 
 message WriteDataResponse {
-    bool success = 1;
-    string error_message = 2;  // Optional error message
+    required bool success = 1;
 }
