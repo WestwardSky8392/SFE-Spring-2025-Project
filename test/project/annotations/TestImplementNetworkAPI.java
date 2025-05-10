@@ -43,6 +43,9 @@ public class TestImplementNetworkAPI {
     @Mock
     private TestingForErrorsProcess mockTestingForErrorsProcess;
 
+    @Mock
+    private project.apis.computeapi.CoordinationEngine mockCoordinationEngine;
+
     /**
      * Sets up test dependencies before each test.
      * Initializes Mockito mocks and creates an instance of ImplementNetworkAPI.
@@ -52,7 +55,8 @@ public class TestImplementNetworkAPI {
         MockitoAnnotations.openMocks(this);
         // DataStorageAPI is not used in the current implementation, so we mock it separately.
         dataStorageAPI = mock(DataStorageAPI.class);
-        networkAPI = new ImplementNetworkAPI(mockScreen);
+        mockCoordinationEngine = mock(project.apis.computeapi.CoordinationEngine.class);
+        networkAPI = new ImplementNetworkAPI(mockCoordinationEngine, mockScreen);
     }
 
     /**

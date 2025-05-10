@@ -8,19 +8,19 @@ service NetworkAPI {
 }
 
 message AskUserRequest {
-    required string inputPath = 1;
-    required string outputPath = 2;
+    optional string inputPath = 1;
+    optional string outputPath = 2;
     optional string delimiter = 3;
 }
 
 message WindowResponse {
-    required string message = 1;
+    optional string message = 1;
 }
 
 message ApiTaskRequest {
-    required string task = 1;
+    optional string task = 1;
 }
 
 message ApiTaskResponse {
-    required string result = 1;
+    optional string result = 1;
 }

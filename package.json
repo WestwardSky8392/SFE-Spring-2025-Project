@@ -1,0 +1,21 @@
+{
+  "name": "sfe-spring-2025-project",
+  "version": "1.0.0",
+  "description": "<img width=\"532\" alt=\"RootChain_LogoProject\" src=\"https://github.com/user-attachments/assets/a0c098dd-3473-4a37-b872-1118e8ea3f8d\" />",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
