@@ -12,7 +12,19 @@ public class FastDigitalRootPersistenceAPI implements DigitalRootPersistenceAPI 
     @Override
     @ConceptualAPIPrototype
     public String processDigitalRootPersistence(int number) {
-        return processDigitalRootPersistence(BigInteger.valueOf(number));
+        // Use fast primitive logic for int inputs
+        if (number == 0) return "0";
+        int n = Math.abs(number);
+        while (n >= 10) {
+            int sum = 0;
+            int temp = n;
+            while (temp > 0) {
+                sum += temp % 10;
+                temp /= 10;
+            }
+            n = sum;
+        }
+        return String.valueOf(n);
     }
 
     /**
@@ -22,7 +34,6 @@ public class FastDigitalRootPersistenceAPI implements DigitalRootPersistenceAPI 
         if (number == null) return "error: null input";
         BigInteger n = number.abs();
         if (n.equals(BigInteger.ZERO)) return "0";
-        // Keep summing digits until we reach a single digit
         while (n.compareTo(BigInteger.TEN) >= 0) {
             BigInteger sum = BigInteger.ZERO;
             while (n.compareTo(BigInteger.ZERO) > 0) {
