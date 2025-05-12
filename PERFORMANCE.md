@@ -39,6 +39,22 @@ Reduces the number of temporary objects, saving memory and processing time.
 - Reducing memory allocation and garbage collection overhead
 Keeps operations in-place and lightweight, minimizing GC interruptions.
 
+### Additional Optimization: Arbitrary-Precision Support
+
+Supports arbitrarily large integer inputs using Java's `BigInteger` class. This allows the engine to compute the digital root for numbers much larger than the standard 32-bit or 64-bit integer range, without loss of performance for typical inputs.
+
+**Key Points:**
+- The API now accepts both `int` and `BigInteger` inputs.
+- The optimized digit-summing logic is implemented for `BigInteger`, ensuring correctness and efficiency for very large numbers.
+- This change ensures compliance with the requirement to handle arbitrarily large inputs.
+
+**Example Usage:**
+```java
+FastDigitalRootPersistenceAPI api = new FastDigitalRootPersistenceAPI();
+String root = api.processDigitalRootPersistence(new BigInteger("123456789012345678901234567890"));
+// root will be the digital root as a string
+```
+
 ### Pull Requests
 - [PR #1: Add optimized FastDigitalRootPersistenceAPI and benchmark in Main](https://github.com/your-username/SFE-Spring-2025-Project/pull/1)
 - [PR #2: Add benchmark integration test for compute engine performance](https://github.com/your-username/SFE-Spring-2025-Project/pull/2)

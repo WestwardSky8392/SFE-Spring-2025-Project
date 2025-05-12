@@ -68,6 +68,10 @@ dependencies {
     testImplementation "io.grpc:grpc-testing:1.59.1"
     testImplementation "io.grpc:grpc-inprocess:1.59.1"
     testImplementation 'junit:junit:4.13.2'
+
+    // Spring Boot
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.0'
 }
 
 def grpcVersion = '1.59.1'
